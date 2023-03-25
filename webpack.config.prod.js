@@ -1,19 +1,16 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanPlugin = require('clean-webpack-plugin');
 
 // const isDevelopment = process.env.NODE_ENV === "development";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    mode: 'development',
     entry: "./src/index.tsx",
     output: {
         filename: "bundle.js",
-        path: path.resolve(__dirname, "build"),
-        // publicPath: 'build',
+        path: path.resolve(__dirname, "dist"),
     },
-    devtool: 'inline-source-map',
+    devtool: 'none',
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "public", "index.html"),
@@ -22,13 +19,11 @@ module.exports = {
             filename: 'css/main.css',
             // filename: isDevelopment ? '[name].css' : '[name].[hash].css',
             // chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
-        }),
-        new CleanPlugin.CleanWebpackPlugin(),
+        })
     ],
     devServer: {
         static: {
-            directory: path.join(__dirname, "build"),
-            // publicPath: 'dist'
+            directory: path.join(__dirname),
         },
         port: 3000,
     },
@@ -55,7 +50,7 @@ module.exports = {
             ],
         },
         {
-            test: /\.tsx$/,
+            test: /\.ts$/,
             exclude: /node_modules/,
             use: ["ts-loader"],
         }
@@ -63,7 +58,7 @@ module.exports = {
       },
       // pass all js files through Babel
       resolve: {
-        extensions: ["*", ".js", ".jsx", ".tsx", ".ts", ".scss"],
+        extensions: ["*", ".js", ".jsx", ".ts", ".scss"],
       }
 };
 
