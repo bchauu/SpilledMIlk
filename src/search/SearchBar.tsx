@@ -1,5 +1,6 @@
 import React, { HtmlHTMLAttributes, useState, useRef } from "react";
 
+
 interface SearchBarProps {
     onSearchResult: (enteredTitle: string, enteredDate: string) => void;
 }
