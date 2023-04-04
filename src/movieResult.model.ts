@@ -8,5 +8,7 @@ export interface movieResult {
     countries: [];
     streamingInfo: {us: {}};
     seasonCount: number;
-
+    backdropURLs: {original: string};
+    type: string;
+    firstAirYear: string;
 }

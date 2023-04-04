@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import SearchBar from "./search/SearchBar";
 import MovieRes from './search/MovieRes';
 import { movieResult } from './movieResult.model';
 
-
 const App: React.FC = () => {
-
     const [movieResult, setMovieResult] = useState<movieResult[]>([]);
+    const [userMovie, setUserMovie] = useState<movieResult[]>([]);
 
     const filterStreamable = (movieList: []) => {
         return movieList.filter( (movie: any) => movie.streamingInfo.us)
     }
-    
 
     const addSearchResult = (enteredTitle: string, enteredDate: string) => {
 
@@ -33,14 +32,46 @@ const App: React.FC = () => {
         console.log(movieResult);
     }
 
-    //wrapper cards for each movie 
-    //filter out those without stream
+    const addUserMovie = (movie: movieResult) => {
+        setUserMovie(
+            [...userMovie, movie]
+        )
+
+        console.log(userMovie);
+        console.log('added to state')
+
+        fetch('http://localhost:3434/addMovie', {
+            method: 'POST',
+            body: JSON.stringify({
+                data: movie
+            }),
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then(res => res.json())
+            .then(res => console.log(res))
+    }
+
+        //use effect for top trending
+        //add users 
+            //specific list for user
+        //share movieList
 
     return(
-        <div>
-            Newer Component
-            <SearchBar onSearchResult={addSearchResult}></SearchBar>
-            <MovieRes movieResult={movieResult}></MovieRes>   
+        <div className='page'>
+            <div className='header'>
+                <h1>Spilled Milk</h1>
+            </div>
+            <div className='searchContent'>
+                <h2>
+                    Search Your Favorite Show
+                </h2>
+                <SearchBar onSearchResult={addSearchResult}></SearchBar>
+            </div>
+            <MovieRes movieResult={movieResult} onAddUserMovie={addUserMovie}  ></MovieRes>
+            <div>
+                MyList 
+                <Link to={'/movieList'}>Click Here</Link>
+            </div>   
         </div>
     )
 }

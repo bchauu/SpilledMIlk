@@ -1,23 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-// import MovieItem from "./MovieItem";
+import { movieResult } from "../movieResult.model";
+import { MovieCard } from "../wrapper/MovieCard";
+import { ListCard } from "../wrapper/ListCard";
 
 interface MovieResProp {
-    movieResult: {tmdbId: number, title: string, seasonCount: number}[];
+    movieResult: movieResult[];
+    onAddUserMovie: (movie: any) => void;
 }
 
-
 const MovieRes: React.FC<MovieResProp> = (props) => {
+    const addMovieToList = (movie: {}) => {
+        console.log(movie);
+        props.onAddUserMovie(movie)
+    }
 
     return (
-        <div>
+        <ListCard className="movieCard">
             {props.movieResult.map(movie => (
-                <li key={movie.tmdbId}>{movie.title}
-                    <p>{movie.seasonCount}</p>
-                    {/* <Link> See More... </Link> */}
-                </li>
+                <MovieCard key={movie.tmdbId}>
+                    <div>
+                        <h1>
+                             {movie.title} 
+                        <button onClick={() => addMovieToList(movie)}>Add to Favorite</button>
+                        </h1>
+                    </div>
+
+                    <img src={movie.backdropURLs.original}></img>
+                    <h2>Overview:</h2>
+                    <p>{movie.overview}</p>
+                    <h2> Type: </h2>
+                        <p>{movie.type}</p>
+                    <Link to={`/movie/${movie.tmdbId}`} state ={{data: movie}}> See More... </Link>
+                </MovieCard>
             ))}
-        </div>
+        </ListCard>
     )
 }
 

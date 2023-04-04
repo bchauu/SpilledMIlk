@@ -11,7 +11,7 @@ module.exports = {
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "build"),
-        // publicPath: 'build',
+        publicPath: '/',
     },
     devtool: 'inline-source-map',
     plugins: [
@@ -30,6 +30,7 @@ module.exports = {
             directory: path.join(__dirname, "build"),
             // publicPath: 'dist'
         },
+        historyApiFallback: true,
         port: 3000,
     },
     module: {

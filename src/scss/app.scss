@@ -1,7 +1,76 @@
-div {
-    color: red;
+* {
+    top: 0%;
+    margin-top: 0%;
 }
 
 body {
-    background-color: lightgray;
+    background-color: rgb(40, 39, 39);
+    left: 0%;
+    right: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+    color: rgb(231, 203, 153);
 }
+
+.header {
+    background-color: rgb(4, 4, 4);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 0%;
+    margin-right: 0%;
+    padding-top: 4px;
+    padding-bottom: 0%;
+    margin-bottom: 0;
+}
+
+.searchContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movieCard {
+    box-shadow: 5px 1px 4px rgba(9, 9, 9, 0.25);
+    width: 100%;
+    align-items: center;
+    background-color: rgb(70, 70, 97);
+    padding: 1%;
+    color: black;
+    border-color: black;
+    border: 2px;
+    border-style: groove;
+
+    h1 {
+        font-style: italic;
+        background-color: rgb(231, 203, 153);
+        border-style: solid;
+        border: .5px;
+        border-color: black;
+    }
+
+    h2 {
+        font-size: 20px;
+        text-decoration: underline;
+    }
+
+    img {
+        width: auto;
+        height: 200px;
+        object-fit: cover;
+        object-position: 10% center;
+        border: .5px;
+        border-style: solid;
+    }
+
+    p {
+        color: rgb(213, 201, 201);
+    }
+  }
+
+  .movieList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    grid-gap: 1.2em;
+    margin: 3%;
+  }

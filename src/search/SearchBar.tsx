@@ -20,7 +20,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
     }
     
     return (
-        <form placeholder="enter here" className='form' onSubmit={submitHandler}>
+      <form placeholder="enter here" className='form' onSubmit={submitHandler}>
         <div>
           <label>Title </label>
           <input type='text' placeholder='Guardian' ref={titleInputRef}/>
