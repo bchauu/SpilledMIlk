@@ -1,18 +1,29 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes, } from "react-router-dom";
+import { UserProvider } from "./contexts/user";
 import App from "./App";
-import MovieDetail from "./search/MovieDetail";
+import Details from "./list/Details";
 import List from "./list/List";
+import Login from './pages/Login';
+import PrivateRoute from './pages/PrivateRoute';
+import Signup from './pages/Signup';
 import "./scss/app"
 
 const root = createRoot(document.getElementById("root"));
 root.render(
     <BrowserRouter>
-        <Routes>
-            <Route path='/' element={<App/>}></Route>
-            <Route path='/movie/:tmdbId' element={<MovieDetail/>}></Route>
-            <Route path='/movieList' element={<List/>}></Route>
-        </Routes>
+        <UserProvider>
+            <Routes>
+                <Route path='/' element={<App/>}/>
+                <Route path='/login' element={<Login/>}/>
+                <Route path='/signup' element={<Signup/>}/>
+                <Route path='/movie/:tmdbId' element={<Details/>}/>
+                <Route element={<PrivateRoute/>}>
+                    <Route path='/movieList' element={<List/>}/>
+                </Route>
+            </Routes>
+        </UserProvider>
     </BrowserRouter>
     );
+

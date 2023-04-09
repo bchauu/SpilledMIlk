@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 const MovieDetail: React.FC = (props) => {
@@ -15,7 +15,6 @@ const MovieDetail: React.FC = (props) => {
             <img src={movieDetails.posterURLs.original}></img>
         </div>
     )
-
 }
 
 export default MovieDetail;

@@ -56,6 +56,14 @@ module.exports = {
             ],
         },
         {
+            test: /\.(jpe?g|png|gif|svg)$/i, 
+            loader: 'file-loader',
+            options: {
+                name: '/src/assets/[name].[ext]'
+            }
+
+        },
+        {
             test: /\.tsx$/,
             exclude: /node_modules/,
             use: ["ts-loader"],

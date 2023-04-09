@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const myURI = 'mongodb+srv://bryancee12:IZpNbQvm0k2ntWLV@cluster0.8pfsy4u.mongodb.net/Users?retryWrites=true&w=majority'
@@ -16,9 +17,10 @@ mongoose
 
 const MovieSchema = new mongoose.Schema(
     {
-    movie: { type: Object, required: true },
+    movie: { type: Object, required: false },
+    user: { type: String, required: false}
     }, 
-    { collection: 'Movies' }
+    { collection: 'bchauu' }
 );
 
 module.exports = mongoose.model('Movies', MovieSchema);

@@ -1,18 +1,48 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
 import SearchBar from "./search/SearchBar";
 import MovieRes from './search/MovieRes';
+import Header from './wrapper/Header';
+import Nav from './wrapper/Nav';
 import { movieResult } from './movieResult.model';
+import { UserContext } from './contexts/user';
 
 const App: React.FC = () => {
     const [movieResult, setMovieResult] = useState<movieResult[]>([]);
-    const [userMovie, setUserMovie] = useState<movieResult[]>([]);
+    const [currentUser, setCurrentUser] = useState<string>('');
+
+    const { fetchUser, logOutUser } = useContext(UserContext);
+
+    useEffect(() => {
+        loadUser();
+        console.log('user is loaded');
+      }, [movieResult]);
+
+
+    const loadUser = async () => {
+          const fetchedUser = await fetchUser();
+          if (fetchedUser) {
+            setCurrentUser(fetchedUser.id);
+          } 
+      }
+
+    const logOut = async () => {
+        console.log('working')
+        try {
+          const loggedOut = await logOutUser();
+          if (loggedOut) {
+            setCurrentUser('');
+            window.location.reload();
+          }
+        } catch (error) {
+          alert(error)
+        }
+      }
 
     const filterStreamable = (movieList: []) => {
         return movieList.filter( (movie: any) => movie.streamingInfo.us)
     }
 
-    const addSearchResult = (enteredTitle: string, enteredDate: string) => {
+    const addSearchResult = (enteredTitle: string) => {
 
                 const options = {
             method: 'GET',
@@ -28,50 +58,40 @@ const App: React.FC = () => {
             .then(response => setMovieResult([...filterStreamable(response.result)]))
             .catch(err => console.error(err));
         }
-
-        console.log(movieResult);
     }
 
     const addUserMovie = (movie: movieResult) => {
-        setUserMovie(
-            [...userMovie, movie]
-        )
 
-        console.log(userMovie);
-        console.log('added to state')
+        if (currentUser != '') {
 
-        fetch('http://localhost:3434/addMovie', {
-            method: 'POST',
-            body: JSON.stringify({
-                data: movie
-            }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-            .then(res => res.json())
-            .then(res => console.log(res))
+            fetch('http://localhost:3434/addMovie', {
+                method: 'POST',
+                body: JSON.stringify({
+                    user: currentUser,
+                    data: movie
+                }),
+                headers: { 'Content-Type': 'application/json' },
+            })
+                .then(res => res.json())
+                .then(res => console.log(res))
+
+        } else {
+            console.log('please sign in')
+        }
+
     }
-
-        //use effect for top trending
-        //add users 
-            //specific list for user
-        //share movieList
 
     return(
         <div className='page'>
-            <div className='header'>
-                <h1>Spilled Milk</h1>
-            </div>
+            <Header onLogOut={logOut}></Header>
+            <Nav currentUser={currentUser} onLogOut={logOut} ></Nav>
             <div className='searchContent'>
-                <h2>
+                <h1>
                     Search Your Favorite Show
-                </h2>
+                </h1>
                 <SearchBar onSearchResult={addSearchResult}></SearchBar>
             </div>
-            <MovieRes movieResult={movieResult} onAddUserMovie={addUserMovie}  ></MovieRes>
-            <div>
-                MyList 
-                <Link to={'/movieList'}>Click Here</Link>
-            </div>   
+            <MovieRes movieResult={movieResult} onAddUserMovie={addUserMovie} ></MovieRes>
         </div>
     )
 }

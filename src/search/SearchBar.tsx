@@ -1,8 +1,8 @@
-import React, { HtmlHTMLAttributes, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 
 interface SearchBarProps {
-    onSearchResult: (enteredTitle: string, enteredDate: string) => void;
+    onSearchResult: (enteredTitle: string) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = (props) => {
@@ -13,23 +13,13 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
     const submitHandler = (e: React.FormEvent) => {
         e.preventDefault();
         const enteredTitle = titleInputRef.current.value;
-        const enteredDate = dateInputRef.current.value;
-
-        props.onSearchResult(enteredTitle, enteredDate);
-        //passes input from user back to App component
+        props.onSearchResult(enteredTitle);
     }
     
     return (
-      <form placeholder="enter here" className='form' onSubmit={submitHandler}>
+      <form className='form' onSubmit={submitHandler}>
         <div>
-          <label>Title </label>
-          <input type='text' placeholder='Guardian' ref={titleInputRef}/>
-        </div>
-        <div>
-          <label>Year </label>
-          <input type='text' placeholder='2018' ref={dateInputRef}/>
-        </div>
-        <div>
+          <input type='text' placeholder='Your Streaming BackLog Begins Here... ' ref={titleInputRef} className='searchBar'/>
           <button type='submit'> Search </button>
         </div>
     </form>

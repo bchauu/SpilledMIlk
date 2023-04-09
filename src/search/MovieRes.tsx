@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import React from "react";
 import { movieResult } from "../movieResult.model";
-import { MovieCard } from "../wrapper/MovieCard";
 import { ListCard } from "../wrapper/ListCard";
+import Movie from "../list/Movie";
 
 interface MovieResProp {
     movieResult: movieResult[];
@@ -10,6 +9,9 @@ interface MovieResProp {
 }
 
 const MovieRes: React.FC<MovieResProp> = (props) => {
+
+    const method = 'post';
+
     const addMovieToList = (movie: {}) => {
         console.log(movie);
         props.onAddUserMovie(movie)
@@ -18,23 +20,9 @@ const MovieRes: React.FC<MovieResProp> = (props) => {
     return (
         <ListCard className="movieCard">
             {props.movieResult.map(movie => (
-                <MovieCard key={movie.tmdbId}>
-                    <div>
-                        <h1>
-                             {movie.title} 
-                        <button onClick={() => addMovieToList(movie)}>Add to Favorite</button>
-                        </h1>
-                    </div>
-
-                    <img src={movie.backdropURLs.original}></img>
-                    <h2>Overview:</h2>
-                    <p>{movie.overview}</p>
-                    <h2> Type: </h2>
-                        <p>{movie.type}</p>
-                    <Link to={`/movie/${movie.tmdbId}`} state ={{data: movie}}> See More... </Link>
-                </MovieCard>
+                <Movie key={movie.tmdbId} movie={movie} methodButton={addMovieToList} method={method}></Movie>
             ))}
-        </ListCard>
+        </ListCard>  
     )
 }
 
