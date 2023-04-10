@@ -14,14 +14,11 @@ app.use(express.urlencoded({limit: '5mb', extended: true}));
 
 
 app.post('/addMovie', controller.postMovieCount, (req, res, next) => {
-    console.log('over here', '2')
     next();
 });
 
 app.post('/addMovie', controller.postMovie, (req, res) => {
-    console.log('here', '4')
     return res.status(200).json(res.locals.result);
-    
 });
 
 app.get('/getMovies/:tagId', controller.getMovies, (req, res) => {
