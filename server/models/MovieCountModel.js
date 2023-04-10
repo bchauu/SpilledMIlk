@@ -1,5 +1,6 @@
 
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 const myURI = 'mongodb+srv://bryancee12:IZpNbQvm0k2ntWLV@cluster0.8pfsy4u.mongodb.net/Users?retryWrites=true&w=majority'
 
 
@@ -14,12 +15,13 @@ mongoose
     .then(() => console.log('Connection to Mongo DB successful.'))
     .catch((err) => console.log(err));
 
-const MovieSchema = new mongoose.Schema(
+const MovieCountSchema = new mongoose.Schema(
     {
+    _id: {type: Number, required: false },
     movie: { type: Object, required: false },
-    user: { type: String, required: false}
+    count: { type: Number, required: false}
     }, 
-    { collection: 'UserMovies' }
+    { collection: 'MovieCount' }
 );
 
-module.exports = mongoose.model('Movies', MovieSchema);
+module.exports = mongoose.model('MovieCount', MovieCountSchema);

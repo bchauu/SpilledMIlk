@@ -6,9 +6,7 @@ interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = (props) => {
-
     const titleInputRef = useRef<HTMLInputElement>(null);
-    const dateInputRef = useRef<HTMLInputElement>(null);
 
     const submitHandler = (e: React.FormEvent) => {
         e.preventDefault();

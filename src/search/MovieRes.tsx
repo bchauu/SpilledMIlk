@@ -9,17 +9,15 @@ interface MovieResProp {
 }
 
 const MovieRes: React.FC<MovieResProp> = (props) => {
-
     const method = 'post';
 
     const addMovieToList = (movie: {}) => {
-        console.log(movie);
         props.onAddUserMovie(movie)
     }
 
     return (
         <ListCard className="movieCard">
-            {props.movieResult.map(movie => (
+            {props.movieResult.map((movie: any) => (
                 <Movie key={movie.tmdbId} movie={movie} methodButton={addMovieToList} method={method}></Movie>
             ))}
         </ListCard>  

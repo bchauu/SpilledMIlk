@@ -20,8 +20,6 @@ const Details: React.FC = () => {
     const streamPlatform = Object.keys(movieDetails.streamingInfo.us)
 
     const changeSeason = (event: React.MouseEvent<HTMLButtonElement>) => {
-        console.log(event.currentTarget.value) //index of specific season
-        console.log(movieDetails.seasons[event.currentTarget.value])
         setSeasonIndex(event.currentTarget.value)
     }
 

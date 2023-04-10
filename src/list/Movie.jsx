@@ -16,12 +16,10 @@ const Movie = (props) => {
 
     const handleMouseEnter = () => {
         setHover(true);
-        console.log('hello')
       };
     
       const handleMouseLeave = () => {
         setHover(false);
-        console.log('nohello')
       };
 
     return (

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { UserContext } from '../contexts/user';
 import { ListCard } from '../wrapper/ListCard';
 import Movie from './Movie';
 import Header from '../wrapper/Header';
@@ -21,7 +20,6 @@ const List = () => {
       }
 
     useEffect(() => {
-
         console.log('useeffect works')
         if (location.state == null) {
             redirectNow();
