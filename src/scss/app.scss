@@ -1,5 +1,30 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin org-blk {
+    color: rgb(231, 203, 153);
+    background-color: black;
+}
+
+@mixin genre-background {
+    background-color: rgb(5, 5, 5);
+    width: max-content;
+    border-radius: 2em;
+    padding-left: 0.5em;
+    padding-right: .5em;
+}
+
+
+
 * {
     top: 0%;
     margin-top: 0%;
@@ -23,17 +48,35 @@ h1 {
     color: rgb(205, 162, 87);
 }
 
+h2 {
+    font-size: 20px;
+}
+
 p {
     color: whitesmoke;
     padding-right: 2em;
 }
 
+button {
+    font-size: 20px;
+}
+
+body {
+    color: rgb(231, 203, 153);
+    background-color: rgb(40, 39, 39);
+    left: 0%;
+    right: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
 
 .favoritesButton {
+    border-color: rgb(66, 58, 46);
     background-color: rgb(205, 162, 87);
+    font-size: 12px;
     font-weight: 300;
     width: 210px;
-    border-color: rgb(66, 58, 46);
     cursor: pointer;
 }
 
@@ -41,25 +84,15 @@ p {
     opacity: 50%;
 }
 
-body {
-    background-color: rgb(40, 39, 39);
-    left: 0%;
-    right: 0%;
-    margin-left: 0%;
-    margin-right: 0%;
-    color: rgb(231, 203, 153);
-}
-
 .header {
-    background-color: rgb(4, 4, 4);
-    display: flex;
-    flex-direction: row;
+    @include flex-row;
     justify-content: center;
+    background-color: rgb(4, 4, 4);
     margin-left: 0%;
     margin-right: 0%;
+    margin-bottom: 0;
     padding-top: 4px;
     padding-bottom: 0%;
-    margin-bottom: 0;
 
     h1 {
         font-size: 45px;
@@ -70,13 +103,10 @@ body {
 }
 
 .user {
-    background-color: rgb(231, 203, 153);
     display: flex;
     flex-direction: row-reverse;
+    background-color: rgb(231, 203, 153);
     padding-right: 2em;
-    // padding-bottom: 0% !important;
-    // margin-bottom: 0% !important;
-    // margin-top: 0% !important;
 
     p {
         color: rgb(68, 67, 65);
@@ -85,8 +115,8 @@ body {
     .userButton {
         background-color: rgb(68, 67, 65);
         color: rgb(212, 159, 81);
-        width: max-content ;
-        height: 25px;
+        width: max-content;
+        height: max-content;
         border-style: solid;
         border-color: rgb(55, 54, 54);
         padding-bottom: 0%;
@@ -95,22 +125,20 @@ body {
 }
 
 .nav {
-    background-color: rgb(231, 203, 153);
-    display: flex;
-    flex-direction: row;
+    @include flex-row;
     justify-content: center;
+    background-color: rgb(231, 203, 153);
     gap: 10em;
     margin-left: 0%;
     margin-right: 0%;
+    margin-bottom: 0;
     padding-top: 0em;
     padding-bottom: 0%;
-    margin-bottom: 0;
 
     h2 {
         font-size: 16px;
         color: rgb(62, 61, 61);
         text-decoration: none;
-        // padding-bottom: 0%;
         margin-bottom: 0.5%;
         
     }
@@ -124,33 +152,27 @@ body {
 
 .favorites {
     font-size: 22px;
-    padding-top: 1.5em;
     text-align: center;
+    padding-top: 1.5em;
     padding-bottom: 0em;
 }
 
 .searchContent {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     align-items: center;
 
     .favorites {
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         align-items: center;
     }
 
     h1 {
-        font-size: 22px;
         padding-top: 1.5em;
     }
 }
 
 .score {
-    display: flex;
-    flex-direction: row;
-    // justify-content: space-around;
-    // padding-top: 2em;
+    @include flex-row;
 
     .imdb {
         width: 2.5em !important;
@@ -163,9 +185,7 @@ body {
     }
 
 .seasonButton {
-    font-size: 20px;
-    color: rgb(231, 203, 153);
-    background-color: black;
+    @include org-blk;
     border: 1px;
     border-style: groove;
     border-radius: 2em;
@@ -173,49 +193,56 @@ body {
 }
 
 .metaData {
-    display: flex;
-    flex-direction: row;
-    // justify-content: space-evenly;
+    @include flex-row;
     gap: 1em;
 
     .genre {
-        background-color: rgb(5, 5, 5);
-        width: max-content;
-        padding-left: 0.5em;
-        padding-right: .5em;
-        border-radius: 2em;
-        // text-align: center;
+        @include genre-background;
     }
 
     .type {
-        background-color: rgb(5, 5, 5);
-        width: max-content;
-        border-radius: 2em;
-        padding-left: 0.5em;
-        padding-right: .5em;
+        @include genre-background;
+    }
+}
+
+.loginForm {
+    @include flex-column;
+    width: 300px;
+    margin: auto;
+
+    h1 {
+        color: black;
+    }
+
+    p {
+        color: rgb(62, 61, 61);
+    }
+
+    button {
+        display: flex;
+        flex-direction: row-reverse;
+        @include org-blk;
+        margin: auto;
+
     }
 }
 
 
 
 
-
 .detailsCard {
-
     padding: 2em;
     padding-right: 8em;
     padding-left: 8em;
 
     .top {
-        display: flex;
-        flex-direction: row;
+        @include flex-row;
         justify-content: center;
 
     }
 
     .visual {
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         justify-content: center;
         
         padding-right: 3em;
@@ -226,24 +253,19 @@ body {
         padding-bottom: 1em;
     }
 
-
-
     .episodeGuide {
         padding-top: 4em;
-        // text-decoration: underline;
     }
 
     .header {
-        display: flex;
-        flex-direction: row;
+        @include flex-row;
         justify-content: space-between;
         background-color: rgb(40, 39, 39);
 
     }
 
     .platforms {
-        display: flex;
-        flex-direction: row;
+        @include flex-row;
         padding-top: 0.3em;
         padding-left: 4em;
 
@@ -270,17 +292,13 @@ body {
     }
 
     .seasons {
-        display: flex;
-        flex-direction: row;
-        // justify-content: space-between;
+        @include flex-row;
         padding-bottom: 2em;
         padding-left: 2em;
         gap: 1em;
 
         button {
-            font-size: 20px;
-            color: rgb(231, 203, 153);
-            background-color: black;
+            @include org-blk;
             border: 1px;
             border-style: groove;
             border-radius: 2em;
@@ -289,23 +307,14 @@ body {
         button:hover {
             color: rgb(214, 178, 116);
             opacity: 80%;
-        
-
         }
 
-        button:focus {
-            color: rgb(214, 178, 116);
-            
-
-        }
     }
 
     .episodeBorder {
-        display: flex;
-        flex-direction: row;
+        @include flex-row;
         justify-content: space-between;
         width: max-content;
-        padding: 2em;
         padding-top: 0em;
         border: 3px;
         border-color: black;
@@ -313,13 +322,10 @@ body {
     }
 
     .episode {
-        display: flex;
-        flex-direction: row;
+        @include flex-row;
         justify-content: space-between;
         padding: 2em;
         padding-top: 0em;
-        // border: 2px, solid, black;
-        // border-style: groove;
 
         .info {
             padding-left: 0.5em;
@@ -339,12 +345,8 @@ body {
 
     }
 
-    h2 {
-        font-size: 20px;
-    }
 
     p {
-        font-size: 13px;
         padding-right: 15em;
     }
 }
@@ -369,7 +371,6 @@ body {
     }
 
     h2 {
-        font-size: 20px;
         text-decoration: underline;
     }
 
@@ -396,7 +397,6 @@ body {
   .list {
 
     h2 {
-        font-size: 22px;
         text-align: center;
         text-decoration: underline;
         padding-top: 1.5em;
@@ -407,11 +407,13 @@ body {
   .movieList {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, .5fr));
-    grid-gap: 4em;
-    margin: 5%;
+    grid-gap: 2em;
+    margin: 7%;
+    margin-top: 3%;
 
     a {
         text-decoration: none;
+
         h2 {
             color: rgb(231, 203, 153);
           }
@@ -471,10 +473,4 @@ body {
     opacity: 1;
   }
   
-  button[type="submit"]:focus,
-  input[type="search"]:focus {
-    box-shadow: 0 0 3px 0 #1183d6;
-    border-color: #1183d6;
-    outline: none;
-  }
 
