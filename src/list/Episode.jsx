@@ -15,22 +15,22 @@ const Episode = (props) => {
             </div>
             <h2>{seasons[seasonIndex].title}</h2>
             {hasEpisodes
-                ?             <div>
-                {seasons[seasonIndex].episodes.map((episode, index) => (
-                <Collapsible open={true} trigger={`S${parseInt(seasonIndex)+1}: E${index+1}`} key={index}>
-                    <li className='episode'>
-                        <div className='episodeBorder'>
-                            <img src={episode.stillURLs.original} ></img>
-                            <div className='info'>
-                                <h2>{episode.title}</h2>
-                                <p>{episode.overview}</p>
-                            </div>
+                ? <div>
+                    {seasons[seasonIndex].episodes.map((episode, index) => (
+                    <Collapsible open={true} trigger={`S${parseInt(seasonIndex)+1}: E${index+1}`} key={index}>
+                        <li className='episode'>
+                            <div className='episodeBorder'>
+                                <img src={episode.stillURLs.original} ></img>
+                                <div className='info'>
+                                    <h2>{episode.title}</h2>
+                                    <p>{episode.overview}</p>
+                                </div>
 
-                        </div>
-                    </li>
-                </Collapsible>
-                ))} 
-            </div>
+                            </div>
+                        </li>
+                    </Collapsible>
+                    ))} 
+                </div>
                 :<div>
                     <p>{seasons[seasonIndex].title} is Coming Soon!</p>
                 </div>
