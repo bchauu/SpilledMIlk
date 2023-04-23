@@ -8,6 +8,7 @@ import PlatformLogo from './PlatformLogo';
 
 const Details: React.FC = () => {
     const [seasonIndex, setSeasonIndex] = useState('0');
+    const [hasEpisodes, setHasEpisodes] = useState(true);
     const location = useLocation();
     const movieDetails = location.state.data;
     const currentUser = location.state.user;
@@ -21,6 +22,12 @@ const Details: React.FC = () => {
 
     const changeSeason = (event: React.MouseEvent<HTMLButtonElement>) => {
         setSeasonIndex(event.currentTarget.value)
+
+        if (movieDetails.seasons[event.currentTarget.value].episodes) {
+            setHasEpisodes(true);
+        } else {
+            setHasEpisodes(false);
+        }
     }
 
     const addUserMovie = (movie: any) => {
@@ -85,7 +92,7 @@ const Details: React.FC = () => {
                      </div>
                 </div>
                 {movieDetails.type == 'series'
-                    ? <Episode changeSeason={changeSeason} seasons={movieDetails.seasons} seasonIndex={seasonIndex}></Episode>
+                    ? <Episode changeSeason={changeSeason} seasons={movieDetails.seasons} seasonIndex={seasonIndex} hasEpisodes={hasEpisodes}></Episode>
                     : <div></div>
                 }
             </DetailsCard>

@@ -1,7 +1,7 @@
 import Collapsible from 'react-collapsible';
 
 const Episode = (props) => {
-    const {seasons, changeSeason, seasonIndex} = props;
+    const {seasons, changeSeason, seasonIndex, hasEpisodes} = props;
 
     return (
         <div className='episodeGuide'>
@@ -14,7 +14,8 @@ const Episode = (props) => {
                 ))}
             </div>
             <h2>{seasons[seasonIndex].title}</h2>
-            <div>
+            {hasEpisodes
+                ?             <div>
                 {seasons[seasonIndex].episodes.map((episode, index) => (
                 <Collapsible open={true} trigger={`S${parseInt(seasonIndex)+1}: E${index+1}`} key={index}>
                     <li className='episode'>
@@ -30,6 +31,10 @@ const Episode = (props) => {
                 </Collapsible>
                 ))} 
             </div>
+                :<div>
+                    <p>{seasons[seasonIndex].title} is Coming Soon!</p>
+                </div>
+            }
         </div>     
     )
 }
