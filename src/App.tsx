@@ -109,12 +109,12 @@ const App: React.FC = () => {
                     <SearchBar onSearchResult={addSearchResult}></SearchBar>
                   </div>
             {searched   
-                ? <MovieRes movieResult={movieResult} onAddUserMovie={addUserMovie} ></MovieRes>
+                ? <MovieRes movieResult={movieResult} onAddUserMovie={addUserMovie} currentUser={currentUser} ></MovieRes>
                 : <div >
                 <h1 className='favorites'>
                     Most Added to Favorites
                 </h1>
-            <MovieRes movieResult={mostFavorite} onAddUserMovie={addUserMovie}></MovieRes>
+            <MovieRes movieResult={mostFavorite} onAddUserMovie={addUserMovie} currentUser={currentUser} ></MovieRes>
             </div>
             }
         </div>

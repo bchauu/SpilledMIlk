@@ -6,6 +6,7 @@ import Movie from "../list/Movie";
 interface MovieResProp {
     movieResult: movieResult[];
     onAddUserMovie: (movie: any) => void;
+    currentUser: string
 }
 
 const MovieRes: React.FC<MovieResProp> = (props) => {
@@ -18,7 +19,7 @@ const MovieRes: React.FC<MovieResProp> = (props) => {
     return (
         <ListCard className="movieCard">
             {props.movieResult.map((movie: any) => (
-                <Movie key={movie.tmdbId} movie={movie} methodButton={addMovieToList} method={method}></Movie>
+                <Movie key={movie.tmdbId} movie={movie} methodButton={addMovieToList} method={method} currentUser={props.currentUser} ></Movie>
             ))}
         </ListCard>  
     )
