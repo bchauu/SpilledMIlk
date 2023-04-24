@@ -282,7 +282,7 @@ body {
 
     .icon {
         width: 4.5em;
-        height: auto;
+        height: 2.5em;
         border: 1px;
         border-style: groove; 
     }
@@ -348,6 +348,17 @@ body {
 
     p {
         padding-right: 15em;
+    }
+}
+
+.movieCardInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 1.4em;
+
+    .icon {
+        width: 2.2em;
     }
 }
 
