@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald');
+@import url('https://fonts.googleapis.com/css?family=Albert+Sans');
 
 @mixin flex-row {
     display: flex;
@@ -32,8 +33,9 @@
 }
 
 a {
+    font-family: AlbertSans;
     font-size: 14px;
-
+    
 }
 
 div {
@@ -53,8 +55,9 @@ h2 {
 }
 
 p {
+    font-family: AlbertSans;
     color: whitesmoke;
-    padding-right: 2em;
+    padding-right: 2em
 }
 
 button {
@@ -113,6 +116,7 @@ body {
     }
 
     .userButton {
+        font-family: AlbertSans;
         background-color: rgb(68, 67, 65);
         color: rgb(212, 159, 81);
         width: max-content;
@@ -127,6 +131,7 @@ body {
 .nav {
     @include flex-row;
     justify-content: center;
+    font-family: AlbertSans;
     background-color: rgb(231, 203, 153);
     gap: 10em;
     margin-left: 0%;
@@ -189,6 +194,8 @@ body {
     border: 1px;
     border-style: groove;
     border-radius: 2em;
+    min-width: 5em;
+    width: max-content;
     cursor: pointer;
 }
 
@@ -292,10 +299,11 @@ body {
     }
 
     .seasons {
-        @include flex-row;
-        padding-bottom: 2em;
-        padding-left: 2em;
-        gap: 1em;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, .5fr));
+        grid-gap: 1.5em;
+        margin: 7%;
+        margin-top: 3%;
 
         button {
             @include org-blk;
@@ -330,6 +338,11 @@ body {
         .info {
             padding-left: 0.5em;
             padding-top: 0em;
+
+            p {
+                font-size: 14px;
+                font-family: AlbertSans
+            }
         }
 
         img {

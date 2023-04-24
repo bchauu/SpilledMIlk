@@ -13,14 +13,14 @@ const Episode = (props) => {
                      </div>
                 ))}
             </div>
-            <h2>{seasons[seasonIndex].title}</h2>
+            <h1>{seasons[seasonIndex].title}</h1>
             {hasEpisodes
                 ? <div>
                     {seasons[seasonIndex].episodes.map((episode, index) => (
                     <Collapsible open={true} trigger={`S${parseInt(seasonIndex)+1}: E${index+1}`} key={index}>
                         <li className='episode'>
                             <div className='episodeBorder'>
-                                <img src={episode.stillURLs.original} ></img>
+                                <img src={episode.stillURLs?.original} ></img>
                                 <div className='info'>
                                     <h2>{episode.title}</h2>
                                     <p>{episode.overview}</p>

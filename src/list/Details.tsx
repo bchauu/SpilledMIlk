@@ -23,7 +23,7 @@ const Details: React.FC = () => {
     const changeSeason = (event: React.MouseEvent<HTMLButtonElement>) => {
         setSeasonIndex(event.currentTarget.value)
 
-        if (movieDetails.seasons[event.currentTarget.value].episodes) {
+        if (movieDetails.seasons[event.currentTarget.value].episodes[0].stillURLs) {
             setHasEpisodes(true);
         } else {
             setHasEpisodes(false);

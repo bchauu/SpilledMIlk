@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ListCard } from '../wrapper/ListCard';
 import Movie from './Movie';
@@ -7,10 +7,9 @@ import Nav from '../wrapper/Nav';
 
 const List = () => {
     const [movieList, setMovieList] = useState([]);
+    const [currentUser, setCurrentUser] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
-
-    console.log(location.state)
 
     const method = 'get';
 
@@ -24,6 +23,7 @@ const List = () => {
         if (location.state == null) {
             redirectNow();
         } else {
+            setCurrentUser(location.state.currentUser);
             fetch(`http://localhost:3434/getMovies/${location.state.currentUser}`, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json'}
@@ -53,7 +53,7 @@ const List = () => {
     return (
     <div>
         <Header></Header>
-        <Nav></Nav>
+        <Nav currentUser={currentUser}></Nav>
         <div className='list'>
             <h2>Favorites List</h2>
         </div>

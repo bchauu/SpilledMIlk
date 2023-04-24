@@ -10,14 +10,11 @@ const Movie = (props) => {
     const movieButon = props.methodButton;
     const method = props.method;
 
-    console.log(movie.streamingInfo.us)
-    const streamPlatform = Object.keys(movie.streamingInfo.us)
-
-    console.log(props.currentUser)
-
     if (method != 'post') { // change based on retreiving a list or searching. list is nested
         movie = props.movie.movie;
-    }
+    } 
+
+    const streamPlatform = Object.keys(movie.streamingInfo.us);
 
     const handleMouseEnter = () => {
         setHover(true);
@@ -47,7 +44,7 @@ const Movie = (props) => {
                     <p>{movie.title}</p>
                 </Link>
                 <div className='platforms'>
-                    {streamPlatform.map((platform, index) => (
+                    {streamPlatform?.map((platform, index) => (
                         <PlatformLogo platform={platform} key={index}></PlatformLogo> 
                     ))}
                 </div>
