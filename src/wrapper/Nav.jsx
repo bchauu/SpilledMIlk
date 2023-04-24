@@ -12,7 +12,7 @@ const Nav = (props) => {
                 : <div></div>
             }
             {currentUser
-                ? <p>Welcome Back</p>
+                ? <p>Welcome Back!</p>
                 : <Link className="userButton" to={'/login'} >Login </Link>
             }
         </div>
