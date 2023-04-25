@@ -35,7 +35,9 @@ controller.postMovie = (req, res, next) => {
 
 controller.getMovies = (req, res, next) => {
         const { tagId } = req.params;
+        console.log('retrieves from MovieList', tagId)
     MovieList.find({user: tagId }, (err, result) => {
+        console.log(result)
         if (err) {
             return next(err);
         }

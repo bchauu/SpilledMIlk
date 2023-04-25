@@ -25,6 +25,10 @@ app.get('/getMovies/:tagId', controller.getMovies, (req, res) => {
     return res.status(200).json(res.locals.allMovies);
 });
 
+// app.get('/sharedList/:userId', controller.getMovies, (req, res) => {
+//     return res.status(200).json(res.locals.allMovies);
+// });
+
 app.get('/mostAdded', controller.mostAdded, (req, res) => {
     return res.status(200).json(res.locals.mostAdded);
 })

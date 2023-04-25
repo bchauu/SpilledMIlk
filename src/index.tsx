@@ -8,6 +8,7 @@ import List from "./list/List";
 import Login from './pages/Login';
 import PrivateRoute from './pages/PrivateRoute';
 import Signup from './pages/Signup';
+import SharedList from "./list/SharedList";
 import "./scss/app"
 
 const root = createRoot(document.getElementById("root"));
@@ -19,6 +20,7 @@ root.render(
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/signup' element={<Signup/>}/>
                 <Route path='/movie/:tmdbId' element={<Details/>}/>
+                <Route path='/sharedList/:userId' element={<SharedList/>}/>
                 <Route element={<PrivateRoute/>}>
                     <Route path='/movieList' element={<List/>}/>
                 </Route>

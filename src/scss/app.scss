@@ -6,6 +6,11 @@
     flex-direction: row;
 }
 
+@mixin flex-row-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 @mixin flex-column {
     display: flex;
     flex-direction: column;
@@ -24,8 +29,6 @@
     padding-right: .5em;
 }
 
-
-
 * {
     top: 0%;
     margin-top: 0%;
@@ -35,13 +38,11 @@
 a {
     font-family: AlbertSans;
     font-size: 14px;
-    
 }
 
 div {
 
     h2 {
-        
         font-size: 15px;
     }
 }
@@ -87,6 +88,19 @@ body {
     opacity: 50%;
 }
 
+.share {
+    @include flex-row-reverse;
+    padding-right: 2em;
+}
+
+.shareButton {
+    border-color: rgb(66, 58, 46);
+    background-color: rgb(231, 160, 39);
+    border-radius: 1em;
+    width: max-content;
+    cursor: pointer;
+}
+
 .header {
     @include flex-row;
     justify-content: center;
@@ -100,14 +114,12 @@ body {
     h1 {
         font-size: 45px;
         cursor: pointer;
-        
     }
 
 }
 
 .user {
-    display: flex;
-    flex-direction: row-reverse;
+    @include flex-row-reverse;
     background-color: rgb(231, 203, 153);
     padding-right: 2em;
 
@@ -147,7 +159,6 @@ body {
         color: rgb(62, 61, 61);
         text-decoration: none;
         margin-bottom: 0.5%;
-        
     }
 
     h2:active {
@@ -228,11 +239,9 @@ body {
     }
 
     button {
-        display: flex;
-        flex-direction: row-reverse;
         @include org-blk;
+        @include flex-row-reverse;
         margin: auto;
-
     }
 }
 
@@ -318,7 +327,6 @@ body {
             color: rgb(214, 178, 116);
             opacity: 80%;
         }
-
     }
 
     .episodeBorder {
@@ -443,7 +451,6 @@ body {
         h2 {
             color: rgb(231, 203, 153);
           }
-
     }
 
 
