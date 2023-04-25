@@ -25,7 +25,7 @@ const Movie = (props) => {
       };
 
     return (
-        <div>
+        <div className='allInfo'>
             {method == 'post' 
             ? <button className='favoritesButton' onClick={() => movieButon(movie)}>Add to Favorites</button>
             : <button className='favoritesButton' onClick={() => movieButon(props.movie._id)}>Remove From Favorites</button>
