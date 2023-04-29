@@ -25,13 +25,11 @@ const SharedList = () => {
 
     useEffect(() => {
         loadUser();
-        console.log('user is loaded');
 
-        // console.log(currentUser, 'check if user is loaded')
-        // setCurrentUser(location.state.currentUser);
+        //fetches a friend's streaming list
         fetch(`http://localhost:3434/getMovies/${routeParams.userId}`, {
             method: 'GET',
-            headers: { 'Content-Type': 'application/json'}
+            headers: { 'Content-Type': 'application/json' }
         })
         .then(data => {
             return data.json();
@@ -80,14 +78,13 @@ const SharedList = () => {
     return (
         <div>
         <Header></Header>
-        {/* <Nav currentUser={currentUser}></Nav> */}
         <div className='list'>
             <h2>Friend's Favorites List</h2>
         </div>
         
         <ListCard>
-        {currentUser == routeParams.userId  
-                ? movieList.map(movie => ( //conditionally render depending if user is same as the list's owner or not
+        {currentUser == routeParams.userId  //conditionally render depending if user is same as the list's owner or not
+                ? movieList.map(movie => ( 
                     <Movie key={movie._id} movie={movie} methodButton={removeMovie} method={method} currentUser={currentUser}></Movie>
                     ))
                 : movieList.map(movie => (

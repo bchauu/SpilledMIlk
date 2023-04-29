@@ -10,31 +10,27 @@ const Details: React.FC = () => {
     const [seasonIndex, setSeasonIndex] = useState('0');
     const [hasEpisodes, setHasEpisodes] = useState(true);
     const location = useLocation();
-    const movieDetails = location.state.data;
-    const currentUser = location.state.user;
+    const { data: movieDetails, user: currentUser } = location.state; //passed in info react router
 
     let allGenres = '';
 
-    movieDetails.genres.map((genre: {name: string}) => {
+    movieDetails.genres.map((genre: {name: string}) => { //transform genres into a string;
         allGenres += `${genre.name}`+ ' ';
-    })
-    const streamPlatform = Object.keys(movieDetails.streamingInfo.us)
+    });
+    const streamPlatform = Object.keys(movieDetails.streamingInfo.us);
 
     const changeSeason = (event: React.MouseEvent<HTMLButtonElement>) => {
         setSeasonIndex(event.currentTarget.value)
-        console.log(movieDetails.seasons)
 
-        if (movieDetails.seasons[event.currentTarget.value] && movieDetails.seasons[event.currentTarget.value].episodes ) {
+        if (movieDetails.seasons[event.currentTarget.value] && movieDetails.seasons[event.currentTarget.value].episodes) {
             setHasEpisodes(true);
         } else {
             setHasEpisodes(false);
-
         }
-    }
+    };
 
     const addUserMovie = (movie: any) => {
-            console.log('movie')
-        if (currentUser != '') {
+        if (currentUser != '') {    //incase user is not signed in
 
             fetch('http://localhost:3434/addMovie', {
                 method: 'POST',
@@ -50,7 +46,7 @@ const Details: React.FC = () => {
         } else {
             console.log('please sign in')
         }
-    }
+    };
 
     return (
         <div>

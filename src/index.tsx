@@ -5,9 +5,9 @@ import { UserProvider } from "./contexts/user";
 import App from "./App";
 import Details from "./list/Details";
 import List from "./list/List";
-import Login from './pages/Login';
-import PrivateRoute from './pages/PrivateRoute';
-import Signup from './pages/Signup';
+import Login from './user/Login';
+import PrivateRoute from './user/PrivateRoute';
+import Signup from './user/Signup';
 import SharedList from "./list/SharedList";
 import "./scss/app"
 

@@ -6,15 +6,14 @@ import PlatformLogo from './PlatformLogo';
 
 const Movie = (props) => {
     const [hover, setHover] = useState(false);
-    let movie = props.movie
-    const movieButon = props.methodButton;
-    const method = props.method;
+    let movie = props.movie;
+    const {methodButton: movieButon, method } = props;
 
     if (method != 'post') { // change based on retreiving a list or searching. list is nested
         movie = props.movie.movie;
     } 
 
-    const streamPlatform = Object.keys(movie.streamingInfo.us);
+    const streamPlatform = Object.keys(movie.streamingInfo.us); //an array from object keys
 
     const handleMouseEnter = () => {
         setHover(true);
@@ -39,8 +38,8 @@ const Movie = (props) => {
                     : <img src={movie.posterURLs.original} onMouseEnter={handleMouseEnter} ></img> //initial state
                 }
             </MovieCard>
-            <MovieCardInfo>
-                <Link to={`/movie/${movie.tmdbId}`} state ={{data: movie, user: props.currentUser}}>
+            <MovieCardInfo> 
+                <Link to={`/movie/${movie.tmdbId}`} state ={{data: movie, user: props.currentUser}}> 
                     <p>{movie.title}</p>
                 </Link>
                 <div className='platforms'>

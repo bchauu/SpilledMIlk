@@ -46,10 +46,8 @@ const Login = (props) => {
    loadUser(); 
  }, []);
  
-
- const onSubmit = async (event) => {
+ const onSubmit = async () => {
    try {
-
      const user = await emailPasswordLogin(form.email, form.password);
      if (user) {
 

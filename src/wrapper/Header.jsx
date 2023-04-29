@@ -1,7 +1,7 @@
 
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const Header = (props) => {
+const Header = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -14,7 +14,6 @@ const Header = (props) => {
     return (
         <div className='header'>
             <h1 onClick={redirectNow}>Spilled Milk</h1>
-
         </div>
     )
 }

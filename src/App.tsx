@@ -18,7 +18,6 @@ const App: React.FC = () => {
 
     useEffect(() => {
         loadUser();
-        console.log('user is loaded');
 
         fetch('http://localhost:3434/mostAdded', {
             method: 'GET',
@@ -43,7 +42,6 @@ const App: React.FC = () => {
       }
 
     const logOut = async () => {
-        console.log('working')
         try {
           const loggedOut = await logOutUser();
           if (loggedOut) {
@@ -55,10 +53,12 @@ const App: React.FC = () => {
         }
       }
 
+    // to only render those that can be streamed
     const filterStreamable = (movieList: []) => {
         return movieList.filter( (movie: any) => movie.streamingInfo.us)
     }
 
+    //searching for matching name via API
     const addSearchResult = (enteredTitle: string) => {
         const options = {
             method: 'GET',
@@ -77,9 +77,11 @@ const App: React.FC = () => {
         }
     }
 
+    //when add button is clicked
     const addUserMovie = (movie: movieResult) => {
 
         if (currentUser != '') {
+            //needs to be user
 
             fetch('http://localhost:3434/addMovie', {
                 method: 'POST',
@@ -100,7 +102,7 @@ const App: React.FC = () => {
 
     return(
         <div className='page'>
-            <Header onLogOut={logOut}></Header>
+            <Header></Header>
             <Nav currentUser={currentUser} onLogOut={logOut} ></Nav>
             <div className='searchContent'>
                     <h1>
@@ -108,14 +110,15 @@ const App: React.FC = () => {
                     </h1>
                     <SearchBar onSearchResult={addSearchResult}></SearchBar>
                   </div>
-            {searched   
+                  <div className='divider'/>
+            {searched   //current user only called once and pass down
                 ? <MovieRes movieResult={movieResult} onAddUserMovie={addUserMovie} currentUser={currentUser} ></MovieRes>
-                : <div >
-                <h1 className='favorites'>
-                    Most Added to Favorites
-                </h1>
-            <MovieRes movieResult={mostFavorite} onAddUserMovie={addUserMovie} currentUser={currentUser} ></MovieRes>
-            </div>
+                : <div>
+                    <h1 className='favorites'>
+                        Most Added to Favorites
+                    </h1>
+                    <MovieRes movieResult={mostFavorite} onAddUserMovie={addUserMovie} currentUser={currentUser} ></MovieRes>
+                 </div>
             }
         </div>
     )

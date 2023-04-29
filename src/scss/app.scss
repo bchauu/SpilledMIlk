@@ -25,8 +25,7 @@
     background-color: rgb(5, 5, 5);
     width: max-content;
     border-radius: 2em;
-    padding-left: 0.5em;
-    padding-right: .5em;
+    padding: 0em 0.5em 0em 0.5em;
 }
 
 * {
@@ -58,7 +57,7 @@ h2 {
 p {
     font-family: AlbertSans;
     color: whitesmoke;
-    padding-right: 2em
+    padding-right: 2em;
 }
 
 button {
@@ -70,8 +69,7 @@ body {
     background-color: rgb(40, 39, 39);
     left: 0%;
     right: 0%;
-    margin-left: 0%;
-    margin-right: 0%;
+    margin: 0%;
 }
 
 
@@ -105,17 +103,13 @@ body {
     @include flex-row;
     justify-content: center;
     background-color: rgb(4, 4, 4);
-    margin-left: 0%;
-    margin-right: 0%;
-    margin-bottom: 0;
-    padding-top: 4px;
-    padding-bottom: 0%;
+    margin: 0;
+    padding: 4px 0px 0px 0px;
 
     h1 {
         font-size: 45px;
         cursor: pointer;
     }
-
 }
 
 .user {
@@ -137,7 +131,6 @@ body {
         border-style: solid;
         border-color: rgb(55, 54, 54);
         padding-bottom: 0%;
-        margin-bottom: 0%;
         margin-top: 1px;
     }
 }
@@ -148,11 +141,8 @@ body {
     font-family: AlbertSans;
     background-color: rgb(231, 203, 153);
     gap: 10em;
-    margin-left: 0%;
-    margin-right: 0%;
-    margin-bottom: 0;
-    padding-top: 0em;
-    padding-bottom: 0%;
+    margin-right: 0;
+    padding: 0;
 
     h2 {
         font-size: 16px;
@@ -170,9 +160,10 @@ body {
 
 .favorites {
     font-size: 22px;
-    text-align: center;
-    padding-top: 1.5em;
-    padding-bottom: 0em;
+    text-align: left;
+    padding: 1.5em 0em 0em 0.5em;
+    border: 0px;
+    border-bottom: 2px solid white;
 }
 
 .searchContent {
@@ -196,16 +187,14 @@ body {
         width: 2.5em !important;
         height: auto !important;
         object-fit: fill !important;
-        padding-right: 1em;
-        padding-bottom: 2em;
+        padding: 0em 1em 2em 0em;
     }
 
     }
 
 .seasonButton {
     @include org-blk;
-    border: 1px;
-    border-style: groove;
+    border: 1px groove;
     border-radius: 2em;
     min-width: 5em;
     width: max-content;
@@ -249,9 +238,7 @@ body {
 
 
 .detailsCard {
-    padding: 2em;
-    padding-right: 8em;
-    padding-left: 8em;
+    padding: 2em 8em 2em 8em;
 
     .top {
         @include flex-row;
@@ -262,7 +249,6 @@ body {
     .visual {
         @include flex-column;
         justify-content: center;
-        
         padding-right: 3em;
     }
 
@@ -294,15 +280,13 @@ body {
         width: 5em;
         height: auto;
         text-align: center;
-        border: 1px;
-        border-style: groove;
+        border: 1px groove;
     }
 
     .icon {
         width: 4.5em;
         height: 2.5em;
-        border: 1px;
-        border-style: groove; 
+        border: 1px groove;
     }
 
     platform:hover {
@@ -318,8 +302,7 @@ body {
 
         button {
             @include org-blk;
-            border: 1px;
-            border-style: groove;
+            border: 1px groove;
             border-radius: 2em;
         }
 
@@ -335,9 +318,7 @@ body {
         max-width: 53em;
         min-width: 53em;
         padding-top: 0em;
-        border: 3px;
-        border-color: black;
-        border-style: groove;
+        border: 3px groove black;
     }
 
     .episode {
@@ -398,16 +379,12 @@ body {
     background-color: rgb(70, 70, 97);
     padding: 1%;
     color: black;
-    border-color: black;
-    border: 2px;
-    border-style: groove;
+    border: 2px groove rgb(95, 94, 93);
 
     h1 {
         font-style: italic;
         background-color: rgb(231, 203, 153);
-        border-style: solid;
-        border: .5px;
-        border-color: black;
+        border-style: 0.5px, solid black;
     }
 
     h2 {
@@ -446,8 +423,8 @@ body {
 
   .movieList {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, .5fr));
-    grid-gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-gap: 1px;
     margin: 7%;
     margin-top: 3%;
 
