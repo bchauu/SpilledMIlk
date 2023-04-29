@@ -27,6 +27,10 @@
     border-radius: 2em;
     padding: 0em 0.5em 0em 0.5em;
 }
+@mixin white-underline {
+    border: 0px;
+    border-bottom: 2px solid white;
+}
 
 * {
     top: 0%;
@@ -159,11 +163,10 @@ body {
 }
 
 .favorites {
+    @include white-underline;
     font-size: 22px;
     text-align: left;
     padding: 1.5em 0em 0em 0.5em;
-    border: 0px;
-    border-bottom: 2px solid white;
 }
 
 .searchContent {
@@ -259,6 +262,10 @@ body {
 
     .episodeGuide {
         padding-top: 4em;
+    }
+
+    .episodeTitle {
+        @include white-underline;
     }
 
     .header {

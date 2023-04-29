@@ -5,7 +5,7 @@ const Episode = (props) => {
 
     return (
         <div className='episodeGuide'>
-            <h1>Episodes Guide</h1>
+            <h1 className='episodeTitle'>Episodes Guide</h1>
             <div className='seasons'>
                 {seasons.map((season, index) => (
                     <div key={index}>
