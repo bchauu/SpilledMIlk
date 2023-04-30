@@ -12,6 +12,8 @@ const List = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const method = 'get';
+
     useEffect(() => {
         if (location.state == null) { //incase link is not clicked from App.js
             redirectNow();
@@ -41,8 +43,6 @@ const List = () => {
             console.log(err.message);
           });
       };
-
-    const method = 'get';
 
     const redirectNow = () => {
         const redirectTo = location.search.replace("?redirectTo=", "");

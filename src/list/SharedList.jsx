@@ -12,6 +12,7 @@ const SharedList = () => {
     const routeParams = useParams();
 
     const { fetchUser } = useContext(UserContext);
+    const method = 'get';
 
     const loadUser = async () => {
         const fetchedUser = await fetchUser();
@@ -19,9 +20,6 @@ const SharedList = () => {
           setCurrentUser(fetchedUser.id);
         } 
     }
-
-    console.log(currentUser)
-
 
     useEffect(() => {
         loadUser();
@@ -39,8 +37,6 @@ const SharedList = () => {
         })
     }, []);
 
-    const method = 'get';
-
     const removeMovie = (id) => {
         console.log(id)
         fetch('http://localhost:3434/deleteMessage', {
@@ -55,7 +51,6 @@ const SharedList = () => {
     };
 
     const addUserMovie = (movie) => {
-
         if (currentUser != '') {
 
             fetch('http://localhost:3434/addMovie', {

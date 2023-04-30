@@ -6,7 +6,7 @@ import Movie from "../list/Movie";
 interface MovieResProp {
     movieResult: movieResult[];
     onAddUserMovie: (movie: any) => void;
-    currentUser: string
+    currentUser: string;
 }
 
 const MovieRes: React.FC<MovieResProp> = (props) => {

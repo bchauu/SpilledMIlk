@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 
-
 interface SearchBarProps {
     onSearchResult: (enteredTitle: string) => void;
 }

@@ -10,7 +10,6 @@ import PlatformLogo from './PlatformLogo';
 const Details: React.FC = () => {
     const [seasonIndex, setSeasonIndex] = useState('0');
     const [hasEpisodes, setHasEpisodes] = useState(true);
-    const [value, setValue] = useState(5);
     const location = useLocation();
     const { data: movieDetails, user: currentUser } = location.state; //passed in info react router
 
@@ -22,7 +21,7 @@ const Details: React.FC = () => {
     const streamPlatform = Object.keys(movieDetails.streamingInfo.us);
 
     const changeSeason = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setSeasonIndex(event.currentTarget.value)
+        setSeasonIndex(event.currentTarget.value);
 
         //due to inconsistency in data from API
         if (movieDetails.seasons[event.currentTarget.value] && movieDetails.seasons[event.currentTarget.value].episodes) {
@@ -52,21 +51,18 @@ const Details: React.FC = () => {
     };
 
     const RateMovieHandler = (value: number) => {
-
-        if (value != null) {
-            console.log(value)
+        if (value != null) { // if same value is clicked twice, it becomes null
+            fetch('http://localhost:3434/addRating', {
+                method: 'POST',
+                body: JSON.stringify({
+                    rating: value,
+                    movie: movieDetails
+                }),
+                headers: { 'Content-Type': 'application/json' },
+            })
+                .then(res => res.json())
+                .then(res => console.log(res))
         }
-
-        fetch('http://localhost:3434/addRating', {
-            method: 'POST',
-            body: JSON.stringify({
-                rating: value,
-                movie: movieDetails
-            }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-            .then(res => res.json())
-            .then(res => console.log(res))
     }
 
     return (

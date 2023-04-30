@@ -45,7 +45,6 @@ const App: React.FC = () => {
 
       }, []);
 
-
     const loadUser = async () => {
           const fetchedUser = await fetchUser();
           if (fetchedUser) {

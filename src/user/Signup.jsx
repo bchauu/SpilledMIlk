@@ -5,11 +5,11 @@ import { UserContext } from "../contexts/user";
 
  
 const Signup = () => {
- const navigate = useNavigate();
- const location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
- const { emailPasswordSignup } = useContext(UserContext);
- const [form, setForm] = useState({
+    const { emailPasswordSignup } = useContext(UserContext);
+    const [form, setForm] = useState({
    email: "",
    password: ""
  });
