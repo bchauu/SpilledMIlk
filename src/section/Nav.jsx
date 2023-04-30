@@ -9,7 +9,7 @@ const Nav = (props) => {
       <div className="user">
         {currentUser ? (
           <button className="userButton" onClick={props.onLogOut}>
-            Log out
+            Log Out
           </button>
         ) : (
           <div></div>
