@@ -1,4 +1,5 @@
 import Collapsible from 'react-collapsible';
+import { Rating } from '@mui/material';
 
 const Episode = (props) => {
     const {seasons, changeSeason, seasonIndex, hasEpisodes} = props;
@@ -25,7 +26,6 @@ const Episode = (props) => {
                                     <h2>{episode.title}</h2>
                                     <p>{episode.overview}</p>
                                 </div>
-
                             </div>
                         </li>
                     </Collapsible>

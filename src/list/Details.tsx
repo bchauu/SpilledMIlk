@@ -4,11 +4,13 @@ import Header from '../wrapper/Header';
 import Nav from '../wrapper/Nav';
 import { DetailsCard } from '../wrapper/DetailsCard';
 import Episode from './Episode';
+import { Rating } from '@mui/material';
 import PlatformLogo from './PlatformLogo';
 
 const Details: React.FC = () => {
     const [seasonIndex, setSeasonIndex] = useState('0');
     const [hasEpisodes, setHasEpisodes] = useState(true);
+    const [value, setValue] = useState(5);
     const location = useLocation();
     const { data: movieDetails, user: currentUser } = location.state; //passed in info react router
 
@@ -22,6 +24,7 @@ const Details: React.FC = () => {
     const changeSeason = (event: React.MouseEvent<HTMLButtonElement>) => {
         setSeasonIndex(event.currentTarget.value)
 
+        //due to inconsistency in data from API
         if (movieDetails.seasons[event.currentTarget.value] && movieDetails.seasons[event.currentTarget.value].episodes) {
             setHasEpisodes(true);
         } else {
@@ -48,6 +51,30 @@ const Details: React.FC = () => {
         }
     };
 
+    const RateMovieHandler = (value: number) => {
+
+        if (value != null) {
+            console.log(value)
+        }
+
+        fetch('http://localhost:3434/addRating', {
+            method: 'POST',
+            body: JSON.stringify({
+                rating: value,
+                movie: movieDetails
+            }),
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then(res => res.json())
+            .then(res => console.log(res))
+        
+        // post and update
+        //fetch
+            //increment amount of ratings by 1
+            //add to existing total ratings
+            //store with movie data
+    }
+
     return (
         <div>
             <Header></Header>
@@ -65,9 +92,24 @@ const Details: React.FC = () => {
                                 : <h1>{`${movieDetails.title} (${movieDetails.firstAirYear})`}</h1>
                             }
                         </div>
-                        <div className='score'>
+                        <div className='score' >
+                            <div className='scoreImdb'>
                                 <img className='imdb' src='https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg'/> 
                                 <h2>{`${movieDetails.imdbRating}/100`}</h2>
+                            </div>
+                            <div>
+                            <Rating
+                                name="simple-controlled"
+                                // value={value}
+                                onChange={(event, newValue) => {
+                                    RateMovieHandler(newValue);
+                                //     setValue(newValue)
+                                // console.log(value);
+                                }}
+                                precision={0.5}
+                            />
+                                {/* <Rating onClick={() => RateMovieHandler('5')} defaultValue={2.5} precision={0.5} value={value}></Rating> */}
+                            </div>
                         </div>
                         <div className='metaData'>
                             <h2 className='genre'>{allGenres}</h2>

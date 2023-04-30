@@ -10,11 +10,13 @@ const App: React.FC = () => {
     const [movieResult, setMovieResult] = useState<movieResult[]>([]);
     const [currentUser, setCurrentUser] = useState<string>('');
     const [mostFavorite, setMostFavorite] = useState<any>([]);
+    const [highestRatings, setHighestRatings] = useState<any>([]);
     const [searched, setSearched] = useState(false);
 
     const { fetchUser, logOutUser } = useContext(UserContext);
 
     const tempFavorite: any = [];
+    const tempRating: any = []; //extract only movie info from fetched data
 
     useEffect(() => {
         loadUser();
@@ -29,9 +31,19 @@ const App: React.FC = () => {
             }) )
             .then(() => {
                 setMostFavorite([...tempFavorite])
-            })
+            });
 
-      }, [movieResult]);
+        fetch('http://localhost:3434/highestRatings', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then(res => res.json())
+            .then(res => res.forEach((res: any) => {
+                tempRating.push(res.movie);
+            }))
+            .then(res => setHighestRatings([...tempRating]))
+
+      }, []);
 
 
     const loadUser = async () => {
@@ -80,6 +92,9 @@ const App: React.FC = () => {
     //when add button is clicked
     const addUserMovie = (movie: movieResult) => {
 
+        console.log(highestRatings)
+        console.log(mostFavorite)
+
         if (currentUser != '') {
             //needs to be user
 
@@ -118,6 +133,10 @@ const App: React.FC = () => {
                         Most Added to Favorites
                     </h1>
                     <MovieRes movieResult={mostFavorite} onAddUserMovie={addUserMovie} currentUser={currentUser} ></MovieRes>
+                    <h1 className='favorites'>
+                        Most Highly Rated
+                    </h1>
+                    <MovieRes movieResult={highestRatings} onAddUserMovie={addUserMovie} currentUser={currentUser} ></MovieRes>
                  </div>
             }
         </div>

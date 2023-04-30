@@ -185,6 +185,12 @@ body {
 
 .score {
     @include flex-row;
+    justify-content: space-between;
+    padding-right: 2em;
+}
+
+.scoreImdb {
+    @include flex-row;
 
     .imdb {
         width: 2.5em !important;

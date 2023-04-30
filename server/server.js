@@ -20,6 +20,15 @@ app.post('/addMovie', controller.postMovie, (req, res) => {
     return res.status(200).json(res.locals.result);
 });
 
+//updates rating and stores in res
+app.post('/addRating', controller.postRating, controller.getRating, (req, res, next) => {
+    next();
+});
+
+app.post('/addRating', controller.updateAvgRating, (req, res) => {
+    return res.status(200).json(res.locals.result);
+});
+
 app.get('/getMovies/:tagId', controller.getMovies, (req, res) => {
     return res.status(200).json(res.locals.allMovies);
 });
@@ -27,6 +36,10 @@ app.get('/getMovies/:tagId', controller.getMovies, (req, res) => {
 
 app.get('/mostAdded', controller.mostAdded, (req, res) => {
     return res.status(200).json(res.locals.mostAdded);
+})
+
+app.get('/highestRatings', controller.highestRatings, (req, res) => {
+    return res.status(200).json(res.locals.highestRatings);
 })
 
 app.delete('/deleteMessage', controller.deleteMessage, (req, res) => {
