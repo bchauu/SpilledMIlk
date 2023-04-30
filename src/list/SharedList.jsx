@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Movie from "./Movie";
-import Header from "../wrapper/Header";
+import Header from "../section/Header";
 import { ListCard } from "../wrapper/ListCard";
 import { UserContext } from "../contexts/user";
 

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ListCard } from "../wrapper/ListCard";
 import Movie from "./Movie";
-import Header from "../wrapper/Header";
-import Nav from "../wrapper/Nav";
+import Header from "../section/Header";
+import Nav from "../section/Nav";
 
 const List = () => {
   const [movieList, setMovieList] = useState([]);

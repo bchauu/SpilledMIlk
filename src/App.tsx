@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import SearchBar from "./search/SearchBar";
 import MovieRes from "./search/MovieRes";
-import Header from "./wrapper/Header";
-import Nav from "./wrapper/Nav";
+import Header from "./section/Header";
+import Nav from "./section/Nav";
 import { movieResult } from "./movieResult.model";
 import { UserContext } from "./contexts/user";
 

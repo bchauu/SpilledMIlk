@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import Header from "../wrapper/Header";
-import Nav from "../wrapper/Nav";
+import Header from "../section/Header";
+import Nav from "../section/Nav";
 import { DetailsCard } from "../wrapper/DetailsCard";
 import Episode from "./Episode";
 import { Rating } from "@mui/material";
