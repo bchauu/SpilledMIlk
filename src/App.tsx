@@ -120,21 +120,20 @@ const App: React.FC = () => {
             <Header></Header>
             <Nav currentUser={currentUser} onLogOut={logOut} ></Nav>
             <div className='searchContent'>
-                    <h1>
-                        Search Your Favorite Show
-                    </h1>
-                    <SearchBar onSearchResult={addSearchResult}></SearchBar>
-                  </div>
-                  <div className='divider'/>
+                <h1>
+                    Search Your Favorite Streams
+                </h1>
+                <SearchBar onSearchResult={addSearchResult}></SearchBar>
+            </div>
             {searched   //current user only called once and pass down
                 ? <MovieRes movieResult={movieResult} onAddUserMovie={addUserMovie} currentUser={currentUser} ></MovieRes>
-                : <div>
+                : <div className='userGenerated'>
                     <h1 className='favorites'>
-                        Most Added to Favorites
+                        Most Favorited 
                     </h1>
                     <MovieRes movieResult={mostFavorite} onAddUserMovie={addUserMovie} currentUser={currentUser} ></MovieRes>
                     <h1 className='favorites'>
-                        Most Highly Rated
+                        Top Rated
                     </h1>
                     <MovieRes movieResult={highestRatings} onAddUserMovie={addUserMovie} currentUser={currentUser} ></MovieRes>
                  </div>

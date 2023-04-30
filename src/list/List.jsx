@@ -8,7 +8,7 @@ import Nav from '../wrapper/Nav';
 const List = () => {
     const [movieList, setMovieList] = useState([]);
     const [currentUser, setCurrentUser] = useState('');
-    const [bttnText, setBttnText] = useState("Share with Friends");
+    const [bttnText, setBttnText] = useState("Share List");
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -65,18 +65,20 @@ const List = () => {
             <Header></Header>
             <Nav currentUser={currentUser}></Nav>
             <div className='list'>
-                <h2>Favorites List</h2>
+                <h1>Favorites List</h1>
             </div>
             <div className='share'>
                 <button className='shareButton' onClick={generateSharedList}>{bttnText}</button>
             </div>
-            <ListCard>
+            <div className='userGenerated'>
+            <ListCard >
                 {movieList.map(movie => (
                 <div key={movie._id}>
                     <Movie key={movie._id} movie={movie} methodButton={removeMovie} method={method} currentUser={location.state.currentUser}></Movie>
                 </div>
                 ))}
             </ListCard>
+            </div>
         </div>
     )
 };

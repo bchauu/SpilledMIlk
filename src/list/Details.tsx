@@ -67,12 +67,6 @@ const Details: React.FC = () => {
         })
             .then(res => res.json())
             .then(res => console.log(res))
-        
-        // post and update
-        //fetch
-            //increment amount of ratings by 1
-            //add to existing total ratings
-            //store with movie data
     }
 
     return (
@@ -82,11 +76,11 @@ const Details: React.FC = () => {
             <DetailsCard>
                 <div className='top'>
                     <div className='visual'>
-                        <img src={movieDetails.posterURLs.original}></img>
                         <button className='favoritesButton' onClick={() => addUserMovie(movieDetails)}>Add to Favorites</button>
+                        <img src={movieDetails.posterURLs.original}></img>
                     </div>
                      <div>
-                        <div className='header'>
+                        <div className='title'>
                             {movieDetails.type == 'movie'
                                 ? <h1>{`${movieDetails.title} (${movieDetails.year})`}</h1>
                                 : <h1>{`${movieDetails.title} (${movieDetails.firstAirYear})`}</h1>
@@ -98,17 +92,15 @@ const Details: React.FC = () => {
                                 <h2>{`${movieDetails.imdbRating}/100`}</h2>
                             </div>
                             <div>
+                            <h2>Rate this Stream:</h2>
                             <Rating
                                 name="simple-controlled"
-                                // value={value}
+                                defaultValue={2.5}
                                 onChange={(event, newValue) => {
                                     RateMovieHandler(newValue);
-                                //     setValue(newValue)
-                                // console.log(value);
                                 }}
                                 precision={0.5}
                             />
-                                {/* <Rating onClick={() => RateMovieHandler('5')} defaultValue={2.5} precision={0.5} value={value}></Rating> */}
                             </div>
                         </div>
                         <div className='metaData'>

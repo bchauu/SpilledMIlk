@@ -13,7 +13,7 @@ const Header = () => {
 
     return (
         <div className='header'>
-            <h1 onClick={redirectNow}>Spilled Milk</h1>
+            <h1 onClick={redirectNow}>Spilled Milk 🥛</h1>
         </div>
     )
 }
