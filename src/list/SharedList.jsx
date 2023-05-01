@@ -38,7 +38,7 @@ const SharedList = () => {
 
   const removeMovie = (id) => {
     console.log(id);
-    fetch("http://localhost:3434/deleteMessage", {
+    fetch("http://localhost:8000/deleteMessage", {
       method: "DELETE",
       body: JSON.stringify({
         data: id,
@@ -51,7 +51,7 @@ const SharedList = () => {
 
   const addUserMovie = (movie) => {
     if (currentUser != "") {
-      fetch("http://localhost:3434/addMovie", {
+      fetch("http://localhost:8000/addMovie", {
         method: "POST",
         body: JSON.stringify({
           user: currentUser,

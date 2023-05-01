@@ -21,7 +21,7 @@ const App: React.FC = () => {
   useEffect(() => {
     loadUser();
 
-    fetch("http://localhost:3434/mostAdded", {
+    fetch("http://localhost:8000/mostAdded", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
@@ -35,7 +35,7 @@ const App: React.FC = () => {
         setMostFavorite([...tempFavorite]);
       });
 
-    fetch("http://localhost:3434/highestRatings", {
+    fetch("http://localhost:8000/highestRatings", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
@@ -104,7 +104,7 @@ const App: React.FC = () => {
     if (currentUser != "") {
       //needs to be user
 
-      fetch("http://localhost:3434/addMovie", {
+      fetch("http://localhost:8000/addMovie", {
         method: "POST",
         body: JSON.stringify({
           user: currentUser,

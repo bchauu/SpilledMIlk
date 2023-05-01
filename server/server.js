@@ -3,7 +3,7 @@ const app = express();
 const controller = require("./controllers/messageController");
 const cors = require("cors");
 
-const PORT = 3434;
+const PORT = process.env.PORT || 8000;
 
 app.use(cors());
 

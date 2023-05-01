@@ -20,7 +20,7 @@ const List = () => {
       redirectNow();
     } else {
       setCurrentUser(location.state.currentUser);
-      fetch(`http://localhost:3434/getMovies/${location.state.currentUser}`, {
+      fetch(`http://localhost:8000/getMovies/${location.state.currentUser}`, {
         //fetches that specific user favorites list
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -52,7 +52,7 @@ const List = () => {
   };
 
   const removeMovie = (id) => {
-    fetch("http://localhost:3434/deleteMessage", {
+    fetch("http://localhost:8000/deleteMessage", {
       method: "DELETE",
       body: JSON.stringify({
         data: id,
