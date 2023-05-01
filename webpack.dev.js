@@ -2,9 +2,6 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanPlugin = require('clean-webpack-plugin');
 
-// const isDevelopment = process.env.NODE_ENV === "development";
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
 module.exports = {
     mode: 'development',
     entry: "./src/index.tsx",
@@ -18,11 +15,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "public", "index.html"),
         }),
-        new MiniCssExtractPlugin({
-            filename: 'css/main.css',
-            // filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-            // chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
-        }),
+        // new MiniCssExtractPlugin({
+        //     filename: 'css/main.css',
+        //     // filename: isDevelopment ? '[name].css' : '[name].[hash].css',
+        //     // chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
+        // }),
         new CleanPlugin.CleanWebpackPlugin(),
     ],
     devServer: {
@@ -46,9 +43,10 @@ module.exports = {
             exclude: /node_modules/,
             use: [
                 // Creates `style` nodes from JS strings
-                MiniCssExtractPlugin.loader,
+                // MiniCssExtractPlugin.loader,
 
                 // Translates CSS into CommonJS
+                "style-loader",
                 "css-loader",
 
                 // Compiles Sass to CSS

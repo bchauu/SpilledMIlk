@@ -1,32 +1,31 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-
-// const isDevelopment = process.env.NODE_ENV === "development";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanPlugin = require('clean-webpack-plugin');
 
 module.exports = {
+    mode: 'production',
+    performance: {
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
+    },
     entry: "./src/index.tsx",
     output: {
         filename: "bundle.js",
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "build"),
+        publicPath: '/',
     },
-    devtool: 'none',
+    devtool: 'source-map',
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "public", "index.html"),
         }),
         new MiniCssExtractPlugin({
             filename: 'css/main.css',
-            // filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-            // chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
-        })
+        }),
+        new CleanPlugin.CleanWebpackPlugin(),
     ],
-    devServer: {
-        static: {
-            directory: path.join(__dirname),
-        },
-        port: 3000,
-    },
     module: {
         // exclude node_modules
         rules: [
@@ -50,7 +49,15 @@ module.exports = {
             ],
         },
         {
-            test: /\.ts$/,
+            test: /\.(jpe?g|png|gif|svg)$/i, 
+            loader: 'file-loader',
+            options: {
+                name: '/src/assets/[name].[ext]'
+            }
+
+        },
+        {
+            test: /\.tsx$/,
             exclude: /node_modules/,
             use: ["ts-loader"],
         }
@@ -58,8 +65,6 @@ module.exports = {
       },
       // pass all js files through Babel
       resolve: {
-        extensions: ["*", ".js", ".jsx", ".ts", ".scss"],
+        extensions: ["*", ".js", ".jsx", ".tsx", ".ts", ".scss"],
       }
 };
-
-
