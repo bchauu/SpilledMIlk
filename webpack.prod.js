@@ -10,7 +10,7 @@ module.exports = {
         maxEntrypointSize: 512000,
         maxAssetSize: 512000
     },
-    entry: "./src/index.tsx",
+    entry: "./client/src/index.tsx",
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "build"),
