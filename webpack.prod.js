@@ -13,7 +13,7 @@ module.exports = {
     entry: "./client/src/index.tsx",
     output: {
         filename: "bundle.js",
-        path: path.resolve(__dirname, "build"),
+        path: path.resolve(__dirname, "dist"),
         publicPath: '/',
     },
     devtool: 'source-map',
@@ -28,7 +28,7 @@ module.exports = {
     ],
     devServer: {
         static: {
-            directory: path.join(__dirname, "build"),
+            directory: path.join(__dirname, "dist"),
             // publicPath: 'dist'
         },
         historyApiFallback: true,
