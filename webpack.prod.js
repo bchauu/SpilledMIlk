@@ -26,6 +26,14 @@ module.exports = {
         }),
         new CleanPlugin.CleanWebpackPlugin(),
     ],
+    devServer: {
+        static: {
+            directory: path.join(__dirname, "build"),
+            // publicPath: 'dist'
+        },
+        historyApiFallback: true,
+        port: 3000,
+    },
     module: {
         // exclude node_modules
         rules: [
