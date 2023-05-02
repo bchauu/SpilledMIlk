@@ -24,7 +24,9 @@ const SharedList = () => {
     loadUser();
 
     //fetches a friend's streaming list
-    fetch(`http://localhost:3434/getMovies/${routeParams.userId}`, {
+
+    // fetch(`http://localhost:8000/getMovies/${routeParams.userId}`, {
+    fetch(`https://backend-5ui3i37gv-bchauu.vercel.app/getMovies/${routeParams.userId}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
@@ -37,8 +39,9 @@ const SharedList = () => {
   }, []);
 
   const removeMovie = (id) => {
-    console.log(id);
-    fetch("http://localhost:8000/deleteMessage", {
+
+    // fetch("http://localhost:8000/deleteMessage", {
+    fetch("https://backend-5ui3i37gv-bchauu.vercel.app/deleteMessage", {
       method: "DELETE",
       body: JSON.stringify({
         data: id,
@@ -51,7 +54,9 @@ const SharedList = () => {
 
   const addUserMovie = (movie) => {
     if (currentUser != "") {
-      fetch("http://localhost:8000/addMovie", {
+
+      // fetch("http://localhost:8000/addMovie", {
+      fetch("https://backend-5ui3i37gv-bchauu.vercel.app/addMovie", {
         method: "POST",
         body: JSON.stringify({
           user: currentUser,

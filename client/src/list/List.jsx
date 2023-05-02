@@ -20,7 +20,8 @@ const List = () => {
       redirectNow();
     } else {
       setCurrentUser(location.state.currentUser);
-      fetch(`http://localhost:8000/getMovies/${location.state.currentUser}`, {
+      // fetch(`http://localhost:8000/getMovies/${location.state.currentUser}`, {
+      fetch(`https://backend-5ui3i37gv-bchauu.vercel.app/getMovies/${location.state.currentUser}`, {
         //fetches that specific user favorites list
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -37,7 +38,8 @@ const List = () => {
   //copy specific URL to user's clipboard
   const generateSharedList = () => {
     navigator.clipboard
-      .writeText(`http://localhost:3000/sharedList/${currentUser}`)
+      // .writeText(`http://localhost:3000/sharedList/${currentUser}`)
+      .writeText(`https://spilled-milk.netlify.app/sharedList/${currentUser}`)
       .then(() => {
         setBttnText("Ready to Share :)");
       })
@@ -52,7 +54,8 @@ const List = () => {
   };
 
   const removeMovie = (id) => {
-    fetch("http://localhost:8000/deleteMessage", {
+    // fetch("http://localhost:8000/deleteMessage", {
+    fetch("https://backend-5ui3i37gv-bchauu.vercel.app/deleteMessage", {
       method: "DELETE",
       body: JSON.stringify({
         data: id,

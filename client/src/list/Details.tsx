@@ -39,7 +39,8 @@ const Details: React.FC = () => {
     if (currentUser != "") {
       //incase user is not signed in
 
-      fetch("http://localhost:3434/addMovie", {
+      // fetch("http://localhost:8000/addMovie", {
+      fetch("https://backend-5ui3i37gv-bchauu.vercel.app/addMovie", {
         method: "POST",
         body: JSON.stringify({
           user: currentUser,
@@ -56,8 +57,10 @@ const Details: React.FC = () => {
 
   const RateMovieHandler = (value: number) => {
     if (value != null) {
+
       // if same value is clicked twice, it becomes null
-      fetch("http://localhost:3434/addRating", {
+      // fetch("http://localhost:8000/addRating", {
+      fetch("https://backend-5ui3i37gv-bchauu.vercel.app/addRating", {
         method: "POST",
         body: JSON.stringify({
           rating: value,
