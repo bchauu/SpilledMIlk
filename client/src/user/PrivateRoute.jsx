@@ -7,7 +7,8 @@ const PrivateRoute = () => {
   const location = useLocation();
   const redirectLoginUrl = `/login?redirectTo=${encodeURI(location.pathname)}`;
 
-  return !user ? <Navigate to={redirectLoginUrl} /> : <Outlet />;
+  // return !user ? <Navigate to={redirectLoginUrl} /> : <Outlet />;
+  return !user ? <Navigate to='/' /> : <Outlet />;
 };
 
 export default PrivateRoute;
