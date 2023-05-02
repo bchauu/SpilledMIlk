@@ -26,12 +26,13 @@ const List = () => {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       })
-        .then((data) => {
+        .then(data => {
           return data.json();
         })
-        .then((data) => {
+        .then(data => {
           setMovieList([...data]);
-        });
+        })
+        .catch(err => console.log(err))
     }
   }, []);
 
@@ -43,8 +44,8 @@ const List = () => {
       .then(() => {
         setBttnText("Ready to Share :)");
       })
-      .catch((err) => {
-        console.log(err.message);
+      .catch(err => {
+        console.log(err);
       });
   };
 
@@ -53,7 +54,7 @@ const List = () => {
     navigate(redirectTo ? redirectTo : "/");
   };
 
-  const removeMovie = (id) => {
+  const removeMovieHandler = (id) => {
     // fetch("http://localhost:8000/deleteMessage", {
     fetch("https://backend-5ui3i37gv-bchauu.vercel.app/deleteMessage", {
       method: "DELETE",
@@ -84,7 +85,7 @@ const List = () => {
               <Movie
                 key={movie._id}
                 movie={movie}
-                methodButton={removeMovie}
+                methodButton={removeMovieHandler}
                 method={method}
                 currentUser={location.state.currentUser}
               ></Movie>

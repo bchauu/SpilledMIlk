@@ -14,7 +14,7 @@ const Episode = (props) => {
               onClick={changeSeason}
               value={index}
             >
-              {" "}{season.title}{" "}
+              {season.title}
             </button>
           </div>
         ))}

@@ -28,13 +28,14 @@ const App: React.FC = () => {
     })
       .then((res) => res.json())
       .then((res) =>
-        res.forEach((res: any) => {
-          tempFavorite.push(res.movie);
+        res.forEach((res: {movie: {}}) => {
+          tempFavorite.push(res.movie);   //fetching from mongodb, upper level of nesting has additional info
         })
       )
       .then(() => {
         setMostFavorite([...tempFavorite]);
-      });
+      })
+      .catch(err => console.log(err))
 
     // fetch("http://localhost:8000/highestRatings", {
     fetch("https://backend-5ui3i37gv-bchauu.vercel.app/highestRatings", {
@@ -47,7 +48,8 @@ const App: React.FC = () => {
           tempRating.push(res.movie);
         })
       )
-      .then((res) => setHighestRatings([...tempRating]));
+      .then((res) => setHighestRatings([...tempRating]))
+      .catch(err => console.log(err))
   }, []);
 
   const loadUser = async () => {
@@ -100,8 +102,6 @@ const App: React.FC = () => {
 
   //when add button is clicked
   const addUserMovie = (movie: movieResult) => {
-    console.log(highestRatings);
-    console.log(mostFavorite);
 
     if (currentUser != "") {
       //needs to be user
@@ -116,9 +116,10 @@ const App: React.FC = () => {
         headers: { "Content-Type": "application/json" },
       })
         .then((res) => res.json())
-        .then((res) => console.log(res));
+        .then((res) => console.log(res))
+        .catch(err => console.log(err))
     } else {
-      console.log("please sign in");
+      console.log("user not signed in");
     }
   };
 

@@ -35,10 +35,11 @@ const SharedList = () => {
       })
       .then((data) => {
         setMovieList([...data]);
-      });
+      })
+      .catch((err) =>  err)
   }, []);
 
-  const removeMovie = (id) => {
+  const removeMovieHandler = (id) => {
 
     // fetch("http://localhost:8000/deleteMessage", {
     fetch("https://backend-5ui3i37gv-bchauu.vercel.app/deleteMessage", {
@@ -52,7 +53,7 @@ const SharedList = () => {
     setMovieList([...movieList.filter((movie) => movie._id != id)]);
   };
 
-  const addUserMovie = (movie) => {
+  const addUserMovieHandler = (movie) => {
     if (currentUser != "") {
 
       // fetch("http://localhost:8000/addMovie", {
@@ -65,9 +66,10 @@ const SharedList = () => {
         headers: { "Content-Type": "application/json" },
       })
         .then((res) => res.json())
-        .then((res) => console.log(res));
+        .then((res) => console.log(res))
+        .catch(err => err)
     } else {
-      console.log("please sign in");
+      console.log("User has not signed sign in");
     }
   };
 
@@ -75,7 +77,7 @@ const SharedList = () => {
     <div>
       <Header></Header>
       <div className="list">
-        <h2>Friend's Favorites List</h2>
+        <h1>Friend's Favorites List</h1>
       </div>
 
       <ListCard>
@@ -84,7 +86,7 @@ const SharedList = () => {
               <Movie
                 key={movie._id}
                 movie={movie}
-                methodButton={removeMovie}
+                methodButton={removeMovieHandler}
                 method={method}
                 currentUser={currentUser}
               ></Movie>
@@ -93,7 +95,7 @@ const SharedList = () => {
               <Movie
                 key={movie._id}
                 movie={movie}
-                methodButton={addUserMovie}
+                methodButton={addUserMovieHandler}
                 method={method}
                 currentUser={currentUser}
               ></Movie>

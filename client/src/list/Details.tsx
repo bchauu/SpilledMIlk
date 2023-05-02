@@ -35,7 +35,7 @@ const Details: React.FC = () => {
     }
   };
 
-  const addUserMovie = (movie: any) => {
+  const addUserMovieHandler = (movie: any) => {
     if (currentUser != "") {
       //incase user is not signed in
 
@@ -48,8 +48,9 @@ const Details: React.FC = () => {
         }),
         headers: { "Content-Type": "application/json" },
       })
-        .then((res) => res.json())
-        .then((res) => console.log(res));
+        .then(res => res.json())
+        // .then(res => console.log(res))
+        .catch(err => console.log(err))
     } else {
       console.log("please sign in");
     }
@@ -69,7 +70,8 @@ const Details: React.FC = () => {
         headers: { "Content-Type": "application/json" },
       })
         .then((res) => res.json())
-        .then((res) => console.log(res));
+        .then((res) => console.log(res))
+        .catch(err => console.log(err))
     }
   };
 
@@ -82,7 +84,7 @@ const Details: React.FC = () => {
           <div className="visual">
             <button
               className="favoritesButton"
-              onClick={() => addUserMovie(movieDetails)}
+              onClick={() => addUserMovieHandler(movieDetails)}
             >
               Add to Favorites
             </button>
@@ -102,7 +104,7 @@ const Details: React.FC = () => {
                   className="imdb"
                   src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg"
                 />
-                <h2>{`${movieDetails.imdbRating}/100`}</h2>
+                <h2>{`${movieDetails.imdbRating/10}/10`}</h2>
               </div>
               <div>
                 <h2>Rate this Stream:</h2>
