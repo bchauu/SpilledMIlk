@@ -21,7 +21,8 @@ const App: React.FC = () => {
   useEffect(() => {
     loadUser();
 
-    fetch("http://localhost:8000/mostAdded", {
+    // fetch("http://localhost:8000/mostAdded", {
+    fetch("https://backend-5ui3i37gv-bchauu.vercel.app/mostAdded", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
@@ -35,7 +36,8 @@ const App: React.FC = () => {
         setMostFavorite([...tempFavorite]);
       });
 
-    fetch("http://localhost:8000/highestRatings", {
+    // fetch("http://localhost:8000/highestRatings", {
+    fetch("https://backend-5ui3i37gv-bchauu.vercel.app/highestRatings", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
@@ -104,7 +106,8 @@ const App: React.FC = () => {
     if (currentUser != "") {
       //needs to be user
 
-      fetch("http://localhost:8000/addMovie", {
+      fetch("https://backend-5ui3i37gv-bchauu.vercel.app/addMovie", {
+      // fetch("http://localhost:8000/addMovie", {
         method: "POST",
         body: JSON.stringify({
           user: currentUser,
