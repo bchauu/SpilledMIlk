@@ -30,7 +30,7 @@
 }
 @mixin org-underline {
   border: 0px;
-  border-bottom: 2px solid  rgb(231, 160, 39);
+  border-bottom: 2px solid  rgb(137, 91, 12);
 }
 
 @mixin wht-underline {
@@ -143,6 +143,10 @@ body {
     border-color: rgb(55, 54, 54);
     padding-bottom: 0%;
     margin-top: 1px;
+  }
+
+  .userButton:hover {
+    background-color: rgb(137, 91, 12);
   }
 }
 

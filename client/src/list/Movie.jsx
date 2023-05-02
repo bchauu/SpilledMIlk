@@ -7,7 +7,7 @@ import PlatformLogo from "./PlatformLogo";
 const Movie = (props) => {
   const [hover, setHover] = useState(false);
   let movie = props.movie;
-  const { methodButton: movieButon, method } = props;
+  const { methodButton: movieButon, method } = props; //keeps reusable regardless of add or delete
 
   if (method != "post") {
     // change based on retreiving a list or searching. list is nested
@@ -27,7 +27,7 @@ const Movie = (props) => {
   return (
     <div className="allInfo">
       {method == "post" ? (
-        <button className="favoritesButton" onClick={() => movieButon(movie)}>
+        <button className="favoritesButton" onClick={() => movieButon(movie)}> 
           Add to Favorites
         </button>
       ) : (
