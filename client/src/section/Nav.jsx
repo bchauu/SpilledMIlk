@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const Nav = (props) => {
   const currentUser = props.currentUser;
@@ -8,9 +9,9 @@ const Nav = (props) => {
     <div>
       <div className="user">
         {currentUser ? (
-          <button className="userButton" onClick={props.onLogOut}>
+          <Button variant="contained" className="userButton" onClick={props.onLogOut}>
             Log Out
-          </button>
+          </Button>
         ) : (
           <div></div>
         )}
@@ -18,7 +19,9 @@ const Nav = (props) => {
           <p>Welcome Back!</p>
         ) : (
           <Link className="userButton" to={"/login"}>
-            Login{" "}
+            <Button variant="contained" className="userButton">
+            Login
+            </Button>
           </Link>
         )}
       </div>
