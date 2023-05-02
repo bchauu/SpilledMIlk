@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
-// const myURI =
-//   "mongodb+srv://bryancee12:IZpNbQvm0k2ntWLV@cluster0.8pfsy4u.mongodb.net/Users?retryWrites=true&w=majority";
-
-  const myURI =
-  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.8pfsy4u.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
-
+const myURI =
+  "mongodb+srv://bryancee12:IZpNbQvm0k2ntWLV@cluster0.8pfsy4u.mongodb.net/Users?retryWrites=true&w=majority";
 
 mongoose
   .connect(myURI, {
