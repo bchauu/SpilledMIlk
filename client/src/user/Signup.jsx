@@ -55,7 +55,7 @@ const Signup = () => {
         onInput={onFormInputChange}
         style={{ marginBottom: "1rem" }}
       />
-      <Button variant="contained" color="primary" onClick={onSubmit}>
+      <Button variant="contained" className="userButton" onClick={onSubmit}>
         Signup
       </Button>
       <p>

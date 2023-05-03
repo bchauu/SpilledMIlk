@@ -3,9 +3,11 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user";
 
-const Login = () => {
+const Login = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  console.log(location.state.currentPath)
 
   const { user, fetchUser, emailPasswordLogin } = useContext(UserContext);
 
@@ -22,7 +24,12 @@ const Login = () => {
 
   const redirectNow = () => {
     const redirectTo = location.search.replace("?redirectTo=", "");
-    navigate(redirectTo ? redirectTo : "/");
+    if (location.state.currentPath != null) {
+      navigate(redirectTo ? redirectTo : `${location.state.currentPath}`);
+    } else {
+
+      navigate(redirectTo ? redirectTo : "/");
+    }
   };
 
   // checks if user is already logged in
@@ -76,7 +83,7 @@ const Login = () => {
         onChange={onFormInputChange}
         style={{ marginBottom: "1rem" }}
       />
-      <Button variant="contained" color="primary" className='userButton' onClick={onSubmit}>
+      <Button variant="contained" className='userButton' onClick={onSubmit}>
         Login
       </Button>
       <p>

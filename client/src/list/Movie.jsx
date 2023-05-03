@@ -14,7 +14,7 @@ const Movie = (props) => {
     movie = props.movie.movie;
   }
 
-  const streamPlatform = Object.keys(movie.streamingInfo.us); //an array from object keys
+  const streamPlatform = Object.keys(movie.streamingInfo?.us); //an array from object keys
 
   const handleMouseEnter = () => {
     setHover(true);

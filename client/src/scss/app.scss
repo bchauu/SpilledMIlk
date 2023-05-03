@@ -445,9 +445,18 @@ body {
 }
 
 .list {
+
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
   h1 {
+
+    @include org-underline;
     text-align: center;
-    text-decoration: underline;
+    max-width: fit-content;
     padding-top: 1.5em;
     padding-bottom: 0em;
   }

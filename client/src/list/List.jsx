@@ -14,28 +14,6 @@ const List = () => {
 
   const method = "get";
 
-  useEffect(() => {
-    if (location.state == null) {
-      //incase link is not clicked from App.js
-      redirectNow();
-    } else {
-      setCurrentUser(location.state.currentUser);
-      // fetch(`http://localhost:8000/getMovies/${location.state.currentUser}`, {
-      fetch(`https://backend-5ui3i37gv-bchauu.vercel.app/getMovies/${location.state.currentUser}`, {
-        //fetches that specific user favorites list
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-      })
-        .then(data => {
-          return data.json();
-        })
-        .then(data => {
-          setMovieList([...data]);
-        })
-        .catch(err => console.log(err))
-    }
-  }, []);
-
   //copy specific URL to user's clipboard
   const generateSharedList = () => {
     navigator.clipboard
@@ -66,12 +44,36 @@ const List = () => {
     setMovieList([...movieList.filter((movie) => movie._id != id)]); //changes state to only those that weren't deleted
   };
 
+  useEffect(() => {
+    if (location.state == null) {
+      //incase link is not clicked from App.js
+      redirectNow();
+    } else {
+      setCurrentUser(location.state.currentUser);
+      // fetch(`http://localhost:8000/getMovies/${location.state.currentUser}`, {
+      fetch(`https://backend-5ui3i37gv-bchauu.vercel.app/getMovies/${location.state.currentUser}`, {
+        //fetches that specific user favorites list
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      })
+        .then(data => {
+          return data.json();
+        })
+        .then(data => {
+          setMovieList([...data]);
+        })
+        .catch(err => console.log(err))
+    }
+  }, []);
+
   return (
     <div>
       <Header></Header>
       <Nav currentUser={currentUser}></Nav>
       <div className="list">
-        <h1>Favorites List</h1>
+        <div>
+          <h1>Favorites List</h1>
+        </div>
       </div>
       <div className="share">
         <button className="shareButton" onClick={generateSharedList}>

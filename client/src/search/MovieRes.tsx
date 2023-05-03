@@ -17,6 +17,7 @@ const MovieRes: React.FC<MovieResProp> = (props) => {
   };
 
   return (
+    // <div className="userGenerated">
     <ListCard className="movieCard">
       {props.movieResult.map((movie: any) => (
         <Movie
@@ -28,6 +29,7 @@ const MovieRes: React.FC<MovieResProp> = (props) => {
         ></Movie>
       ))}
     </ListCard>
+    // </div>
   );
 };
 

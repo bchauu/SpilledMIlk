@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 
 const Nav = (props) => {
   const currentUser = props.currentUser;
+  const currentPath = props.currentPath;
 
   return (
     <div>
@@ -18,7 +19,7 @@ const Nav = (props) => {
         {currentUser ? (
           <p>Welcome Back!</p>
         ) : (
-          <Link className="userButton" to={"/login"}>
+          <Link className="userButton" to={"/login"} state={{ currentPath: currentPath}}>
             <Button variant="contained" className="userButton">
             Login
             </Button>

@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import Movie from "./Movie";
 import Header from "../section/Header";
 import { ListCard } from "../wrapper/ListCard";
 import { UserContext } from "../contexts/user";
+import Nav from "../section/Nav";
 
 const SharedList = () => {
   const [currentUser, setCurrentUser] = useState("");
   const [movieList, setMovieList] = useState([]);
   const routeParams = useParams();
+
+  const location = useLocation();
 
   const { fetchUser } = useContext(UserContext);
   const method = "get";
@@ -17,27 +20,9 @@ const SharedList = () => {
     const fetchedUser = await fetchUser();
     if (fetchedUser) {
       setCurrentUser(fetchedUser.id);
+      console.log(fetchUser.id)
     }
   };
-
-  useEffect(() => {
-    loadUser();
-
-    //fetches a friend's streaming list
-
-    // fetch(`http://localhost:8000/getMovies/${routeParams.userId}`, {
-    fetch(`https://backend-5ui3i37gv-bchauu.vercel.app/getMovies/${routeParams.userId}`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((data) => {
-        return data.json();
-      })
-      .then((data) => {
-        setMovieList([...data]);
-      })
-      .catch((err) =>  err)
-  }, []);
 
   const removeMovieHandler = (id) => {
 
@@ -73,13 +58,37 @@ const SharedList = () => {
     }
   };
 
+  useEffect(() => {
+    loadUser();
+    console.log(location.pathname)
+
+    //fetches a friend's streaming list
+
+    // fetch(`http://localhost:8000/getMovies/${routeParams.userId}`, {
+    fetch(`https://backend-5ui3i37gv-bchauu.vercel.app/getMovies/${routeParams.userId}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((data) => {
+        return data.json();
+      })
+      .then((data) => {
+        setMovieList([...data]);
+      })
+      .catch((err) =>  err)
+  }, []);
+
   return (
     <div>
       <Header></Header>
+      <Nav currentPath={location.pathname}></Nav>
       <div className="list">
-        <h1>Friend's Favorites List</h1>
+        <div>
+          <h1>Friend's Favorites List</h1>
+        </div>
       </div>
-
+    
+    <div className="userGenerated">
       <ListCard>
         {currentUser == routeParams.userId //conditionally render depending if user is same as the list's owner or not
           ? movieList.map((movie) => (
@@ -101,6 +110,7 @@ const SharedList = () => {
               ></Movie>
             ))}
       </ListCard>
+      </div>
     </div>
   );
 };
