@@ -13,8 +13,8 @@ import "./scss/app";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
-    <UserProvider>
   <BrowserRouter>
+    <UserProvider>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/login" element={<Login />} />
@@ -25,6 +25,6 @@ root.render(
           <Route path="/movieList" element={<List />} />
         </Route>
       </Routes>
-  </BrowserRouter>
     </UserProvider>
+  </BrowserRouter>
 );

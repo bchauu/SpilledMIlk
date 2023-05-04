@@ -12,7 +12,6 @@ const List = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-
   const method = "get";
 
   //copy specific URL to user's clipboard
@@ -70,7 +69,7 @@ const List = () => {
   return (
     <div>
       <Header></Header>
-      <Nav currentUser={currentUser} onLogOut={location.state.onLogOut}></Nav>
+      <Nav currentUser={currentUser}></Nav>
       <div className="list">
         <div>
           <h1>Favorites List</h1>

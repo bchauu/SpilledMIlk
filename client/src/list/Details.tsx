@@ -1,6 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { UserContext } from "../contexts/user";
 import Header from "../section/Header";
 import Nav from "../section/Nav";
 import { DetailsCard } from "../wrapper/DetailsCard";
@@ -14,20 +13,7 @@ const Details: React.FC = () => {
   const location = useLocation();
   const { data: movieDetails, user: currentUser } = location.state; //passed in info react router
 
-  const { logOutUser } = useContext(UserContext);
-
   let allGenres = "";
-
-  const logOut = async () => {
-    try {
-      const loggedOut = await logOutUser();
-      if (loggedOut) {
-        window.location.reload();
-      }
-    } catch (error) {
-      alert(error);
-    }
-  };
 
   movieDetails.genres.map((genre: { name: string }) => {
     //transform genres into a string;
@@ -92,7 +78,7 @@ const Details: React.FC = () => {
   return (
     <div>
       <Header></Header>
-      <Nav currentUser={currentUser} onLogOut={logOut}></Nav>
+      <Nav currentUser={currentUser}></Nav>
       <DetailsCard>
         <div className="top">
           <div className="visual">
