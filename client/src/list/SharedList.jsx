@@ -81,7 +81,7 @@ const SharedList = () => {
   return (
     <div>
       <Header></Header>
-      <Nav currentPath={location.pathname}></Nav>
+      <Nav currentPath={location.pathname} currentUser={currentUser}></Nav>
       <div className="list">
         <div>
           <h1>Friend's Favorites List</h1>

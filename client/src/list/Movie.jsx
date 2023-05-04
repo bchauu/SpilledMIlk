@@ -5,7 +5,6 @@ import { MovieCardInfo } from "../wrapper/MovieCardInfo";
 import PlatformLogo from "./PlatformLogo";
 
 const Movie = (props) => {
-  const [hover, setHover] = useState(false);
   let movie = props.movie;
   const { methodButton: movieButon, method } = props; //keeps reusable regardless of add or delete
 
@@ -15,14 +14,6 @@ const Movie = (props) => {
   }
 
   const streamPlatform = Object.keys(movie.streamingInfo?.us); //an array from object keys
-
-  const handleMouseEnter = () => {
-    setHover(true);
-  };
-
-  const handleMouseLeave = () => {
-    setHover(false);
-  };
 
   return (
     <div className="allInfo">
@@ -40,24 +31,14 @@ const Movie = (props) => {
       )}
       <MovieCard key={movie._id}>
         <div></div>
-        {
-          hover ? (
-            <Link
+        <Link
               to={`/movie/${movie.tmdbId}`}
               state={{ data: movie, user: props.currentUser }}
             >
               <img
                 src={movie.posterURLs.original}
-                onMouseLeave={handleMouseLeave}
               ></img>
-            </Link> //when hover
-          ) : (
-            <img
-              src={movie.posterURLs.original}
-              onMouseEnter={handleMouseEnter}
-            ></img>
-          ) //initial state
-        }
+            </Link> 
       </MovieCard>
       <MovieCardInfo>
         <Link
