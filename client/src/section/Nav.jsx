@@ -30,7 +30,7 @@ const Nav = (props) => {
         <Link to={"/"}>
           <h2>Search</h2>
         </Link>
-        <Link to={"/movieList"} state={{ currentUser }}>
+        <Link to={"/movieList"} state={{ currentUser, onLogOut: props.onLogOut }}>
           <h2>My List</h2>
         </Link>
       </div>

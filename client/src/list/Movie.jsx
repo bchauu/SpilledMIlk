@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
+
 import { MovieCard } from "../wrapper/MovieCard";
 import { MovieCardInfo } from "../wrapper/MovieCardInfo";
 import PlatformLogo from "./PlatformLogo";
